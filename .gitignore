@@ -19,3 +19,6 @@ doc/
 .project
 .DS_Store
 .idea
+.secret
+.ruby-version
+.ruby-gemset
