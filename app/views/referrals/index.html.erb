@@ -15,12 +15,14 @@
     <%= render partial: 'form' %>
   </div>
   <div class="col-md-8">
-    <% if @referrals.any? %>
-      <ol>
-        <%= render @referrals %>
-      </ol>
-    <% else %>
-      No referrals posted yet!
-    <% end %>
+    <div class="referrals-list">
+      <% if @referrals.any? %>
+        <ol>
+          <%= render @referrals %>
+        </ol>
+      <% else %>
+        No referrals posted yet!
+      <% end %>
+    </div>
   </div>
 </div>

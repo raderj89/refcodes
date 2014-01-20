@@ -29,8 +29,15 @@
   margin-top: 22px;
 }
 
-/*
+.referrals-list {
+  max-height: 1000px;
+  overflow: scroll;
+  border-left: 1px solid #ccc;
+}
+
 .ref-form {
-  margin: 5px 0;
   border: 1px solid #ccc;
-}*/
+  border-radius: 5px;
+  box-shadow: 5px 5px 2px #ccc;
+  padding-bottom: 10px;
+}

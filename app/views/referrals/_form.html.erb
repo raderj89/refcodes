@@ -1,5 +1,15 @@
 <%= form_for @referral, html: { class: 'form-horizontal' } do |f| %>
+  <h2>Add Referral</h2>
   <%= render 'shared/error_messages' %>
+
+  <%= f.label :company, "Company" %>
+  <%= fields_for :company, @company do |company| %>
+      <%= f.text_field :company, class: 'form-control' %>
+  <% end %>
+
+  <br>
+
+  <%= f.hidden_field :company_id %>
   
   <%= f.label :details, "Deal details" %>
   <%= f.text_area :details, placeholder: "What's your deal?", class: 'form-control' %>
