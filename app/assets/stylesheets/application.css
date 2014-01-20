@@ -24,3 +24,13 @@
   @extend .control-group;
   @extend .error;
 }
+
+.message {
+  margin-top: 22px;
+}
+
+/*
+.ref-form {
+  margin: 5px 0;
+  border: 1px solid #ccc;
+}*/
