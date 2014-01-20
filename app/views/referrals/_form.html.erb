@@ -1,0 +1,41 @@
+<%= form_for @referral, html: { class: 'form-horizontal' } do |f| %>
+  <%= render 'shared/error_messages' %>
+  
+  <%= f.label :details, "Deal details" %>
+  <%= f.text_area :details, placeholder: "What's your deal?", class: 'form-control' %>
+
+  <br>
+
+  <div class="row">
+    <div class="col-xs-6">
+
+        <%= f.label :link, "Link to deal" %>
+        <%= f.text_field :link, class: 'form-control' %>
+
+    </div>
+
+    <div class="col-xs-6">
+      
+        <%= f.label :expiration, "Expiration? (Optional)" %>
+        <%= f.date_field :expiration, class: 'form-control' %>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col-xs-6">
+        <%= f.label :code, "Referral code (Optional)" %>
+        <%= f.text_field :code, class: 'form-control' %>
+    </div>
+
+    <div class="col-xs-6">
+        <%= f.label :limit, "Limit (Optional)" %>
+        <%= f.text_field :limit, class: 'form-control' %>
+    </div>
+  </div>
+
+  <br>
+
+  <%= f.submit "Submit", class: 'btn btn-lg btn-block btn-primary' %>
+<% end %>

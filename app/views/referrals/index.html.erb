@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-6">
+    <h1>Refcodes</h1>
+    Referral discounts for great tech<br>
+    products and services
+  </div>
+  <div class="col-md-6">
+    Share referral discounts for your favorite web products and services, and redeem discounts for other products and services you want to try out. Oh, and if you see that there is already a post for the same referral deal, don't duplicate it. Otherwise, we might remove it.
+    <span class="pull-right">Thanks!</span>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-4">
+    <%= render partial: 'form' %>
+  </div>
+  <div class="col-md-8">
+    <% if @referrals.any? %>
+      <ol>
+        <%= render @referrals %>
+      </ol>
+    <% else %>
+      No referrals posted yet!
+    <% end %>
+  </div>
+</div>

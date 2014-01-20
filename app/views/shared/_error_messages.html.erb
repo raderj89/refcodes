@@ -1,0 +1,12 @@
+<% if @referral.errors.any? %>
+  <div id="error-explanation">
+    <div class="alert alert-block alert-danger">
+      The form contains <%= pluralize(@referral.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @referral.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
