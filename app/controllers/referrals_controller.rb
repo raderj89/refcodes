@@ -7,8 +7,8 @@ class ReferralsController < ApplicationController
 
   def create
     @company = Company.where(name: referral_params[:company]).first_or_create
-    binding.pry
-    @referral = @company.referrals.build(referral_params)
+    @referral = @company.referrals.build(company_id: @company.id, details: referral_params[:details], link: referral_params[:link],
+                                         expiration: referral_params[:expiration], code: referral_params[:code], limit: referral_params[:limit])
     if @referral.save
       flash[:success] = "Referral submitted!"
       redirect_to root_url
