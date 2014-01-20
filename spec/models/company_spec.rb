@@ -27,6 +27,7 @@ describe Company do
 
     it "should destroy associated referrals" do
       referrals = @company.referrals.to_a
+  
       @company.destroy
       expect(referrals).not_to be_empty
       referrals.each do |referral|
