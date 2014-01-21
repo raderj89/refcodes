@@ -1,4 +1,19 @@
-  <li><%= referral.details %></li>
-  <%= referral.link %>
-  <%= referral.id %>
-  <hr>
+<h3><%= referral.company.name %></h3>
+<h4><%= referral.details %></h4>
+<small>
+Link: <%= referral.link %>
+<br>
+<% unless referral.code.nil? || referral.code.empty? %>
+Code: <%= referral.code %>
+<br>
+<% end %>
+<% unless referral.expiration.nil? %>
+Expires: <%= referral.expiration %>
+<br>
+<% end %>
+<% unless referral.limit.nil? %>
+Limit: <%= referral.limit %>
+<br>
+<% end %>
+</small>
+<hr>

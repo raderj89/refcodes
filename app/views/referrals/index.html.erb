@@ -18,12 +18,15 @@
   <div class="col-md-8">
     <div class="referrals-list">
       <% if @referrals.any? %>
-        <ol>
-          <%= render @referrals %>
-        </ol>
+        <%= render @referrals %>
       <% else %>
         No referrals posted yet!
       <% end %>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  var elem = $(".detail-counter");
+  $("#referral_details").limiter(140, elem);
+</script>

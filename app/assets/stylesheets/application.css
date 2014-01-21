@@ -20,6 +20,7 @@
   max-height: 1000px;
   overflow: scroll;
   border-left: 1px solid #ccc;
+  padding-left: 15px;
 }
 
 .ref-form {

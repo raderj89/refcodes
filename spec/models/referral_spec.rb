@@ -31,4 +31,9 @@ describe Referral do
     it { should_not be_valid }
   end
 
+  describe "when details are too long" do
+    before { @referral.details = "This is way too long." * 50 }
+    it { should_not be_valid }
+  end
+
 end

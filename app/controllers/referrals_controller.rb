@@ -13,7 +13,7 @@ class ReferralsController < ApplicationController
       flash[:success] = "Referral submitted!"
       redirect_to root_url
     else
-      flash[:danger] = "Problem submitting referral. Please try again. #{@referral.errors.full_messages}"
+      flash[:danger] = "Problem submitting referral. Please try again. #{@referral.errors.full_messages.join(" ")}"
       redirect_to root_path
     end
   end
