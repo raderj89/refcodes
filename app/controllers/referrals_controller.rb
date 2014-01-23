@@ -1,8 +1,13 @@
 class ReferralsController < ApplicationController
+
+  respond_to :html, :js
+
   def index
     @company = Company.new
     @referral = Referral.new
     @referrals = Referral.all
+    @new_referral = Referral.new
+    @new_company = Company.new
   end
 
   def create
@@ -11,10 +16,12 @@ class ReferralsController < ApplicationController
                                          expiration: referral_params[:expiration], code: referral_params[:code], limit: referral_params[:limit])
     if @referral.save
       flash[:success] = "Referral submitted!"
-      redirect_to root_url
     else
       flash[:danger] = "Problem submitting referral. Please try again. #{@referral.errors.full_messages.join(" ")}"
-      redirect_to root_path
+    end
+
+    respond_with(@referral) do |f|
+      f.html { redirect_to root_path }
     end
   end
 
@@ -33,3 +40,5 @@ class ReferralsController < ApplicationController
       params.require(:referral).permit(:company, :details, :link, :expiration, :code, :limit)
     end
 end
+
+#params.require(:referral).permit(permit(:company, :details, :link, :expiration, :code, :limit)).merge(company_id: @company.id)

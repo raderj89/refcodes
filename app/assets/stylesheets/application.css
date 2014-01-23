@@ -8,6 +8,7 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require social-share-button
  *= require_self
  *= require_tree .
  */
@@ -31,7 +32,8 @@
 }
 
 .social-share {
-  min-height: 145px !important;}
+  min-height: 145px !important;
+}
 
 .buttons {
   position: absolute;
@@ -40,4 +42,13 @@
 
 .fb-share {
   vertical-align: top;
+}
+
+.referral {
+  border-bottom: solid 1px #CCC;
+  padding: 5px 0;
+}
+
+.referral.hover {
+  background: #FAFAFA;
 }

@@ -10,13 +10,15 @@
     <span class="pull-right">Thanks!</span>
   </div>
 </div>
-<br>
+<hr>
 <div class="row">
   <div class="col-md-4 ref-form">
-    <%= render partial: 'form' %>
+    <div class="js-ref-form">
+      <%= render partial: 'form', locals: { referral: @referral, company: @company } %>
+    </div>
   </div>
   <div class="col-md-8">
-    <div class="referrals-list">
+    <div class="referrals-list js-referrals">
       <% if @referrals.any? %>
         <%= render @referrals %>
       <% else %>
