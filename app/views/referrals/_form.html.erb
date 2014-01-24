@@ -2,7 +2,7 @@
   <h2>Add Referral</h2>
   <%= render 'shared/error_messages' %>
 
-  <%= f.label company, "Company" %>
+  <%= f.label :company, "Company" %>
   <%= fields_for Company.new do |company| %>
       <%= f.text_field :company, class: 'form-control' %>
   <% end %>
@@ -47,3 +47,8 @@
 
   <%= f.submit "Submit", class: 'btn btn-lg btn-block btn-primary' %>
 <% end %>
+
+<script type="text/javascript">
+  var elem = $(".detail-counter");
+  $("#referral_details").limiter(140, elem);
+</script>

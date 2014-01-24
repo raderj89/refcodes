@@ -14,7 +14,7 @@
 <div class="row">
   <div class="col-md-4 ref-form">
     <div class="js-ref-form">
-      <%= render partial: 'form', locals: { referral: @referral, company: @company } %>
+      <%= render partial: 'form' %>
     </div>
   </div>
   <div class="col-md-8">
@@ -28,7 +28,3 @@
   </div>
 </div>
 
-<script type="text/javascript">
-  var elem = $(".detail-counter");
-  $("#referral_details").limiter(140, elem);
-</script>

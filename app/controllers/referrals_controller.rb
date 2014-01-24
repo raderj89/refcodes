@@ -6,22 +6,21 @@ class ReferralsController < ApplicationController
     @company = Company.new
     @referral = Referral.new
     @referrals = Referral.all
-    @new_referral = Referral.new
-    @new_company = Company.new
+
   end
 
   def create
     @company = Company.where(name: referral_params[:company]).first_or_create
-    @referral = @company.referrals.build(company_id: @company.id, details: referral_params[:details], link: referral_params[:link],
+    @referral = @company.referrals.build(details: referral_params[:details], link: referral_params[:link],
                                          expiration: referral_params[:expiration], code: referral_params[:code], limit: referral_params[:limit])
     if @referral.save
       flash[:success] = "Referral submitted!"
     else
-      flash[:danger] = "Problem submitting referral. Please try again. #{@referral.errors.full_messages.join(" ")}"
+      flash[:danger] = "Problem submitting referral. Please try again."
     end
 
     respond_with(@referral) do |f|
-      f.html { redirect_to root_path }
+      f.html { render :index }
     end
   end
 
