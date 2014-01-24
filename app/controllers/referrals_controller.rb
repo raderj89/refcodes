@@ -6,17 +6,16 @@ class ReferralsController < ApplicationController
     @company = Company.new
     @referral = Referral.new
     @referrals = Referral.all
-
   end
 
   def create
-    @company = Company.where(name: referral_params[:company]).first_or_create
-    @referral = @company.referrals.build(details: referral_params[:details], link: referral_params[:link],
-                                         expiration: referral_params[:expiration], code: referral_params[:code], limit: referral_params[:limit])
+    @company = Company.where(name: company_params[:name]).first_or_create
+    @referral = @company.referrals.build(referral_params)
+    @new_referral = Referral.new
+    @new_company = Company.new
+
     if @referral.save
-      flash[:success] = "Referral submitted!"
-    else
-      flash[:danger] = "Problem submitting referral. Please try again."
+      flash.now[:success] = "Referral submitted!"
     end
 
     respond_with(@referral) do |f|
@@ -36,7 +35,11 @@ class ReferralsController < ApplicationController
   private
 
     def referral_params
-      params.require(:referral).permit(:company, :details, :link, :expiration, :code, :limit)
+      params.require(:referral).permit(:details, :link, :expiration, :code, :limit)
+    end
+
+    def company_params
+      params.require(:company).permit(:name)
     end
 end
 

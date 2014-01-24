@@ -1,6 +1,8 @@
 <% if @referral.valid? %>
   $(".js-referrals").prepend("<%= escape_javascript(render(@referral)) %>");
-  $(".js-ref-form").html("<%= escape_javascript(render partial: 'form') %>");
+  $(".js-ref-form").html("<%= escape_javascript(render partial: 'form', locals: { referral: @new_referral, company: @new_company }) %>");
 <% else %>
-  $(".js-ref-form").html("<%= escape_javascript(render 'form') %>");
+  $(".js-ref-form").html("<%= escape_javascript(render partial: 'form', locals: { referral: @referral, company: @company }) %>");
 <% end %>
+
+$("#notice").html("<%= escape_javascript(render partial: 'shared/flash' , locals: { flash: flash }).html_safe %>");

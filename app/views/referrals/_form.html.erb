@@ -1,31 +1,39 @@
-<%= form_for Referral.new, html: { class: 'form-horizontal' }, remote: true do |f| %>
+<%= form_for referral, remote: true do |f| %>
   <h2>Add Referral</h2>
+  <div id="notice">
+    <%= render partial: 'shared/flash', locals: { flash: flash } %>
+  </div>
   <%= render 'shared/error_messages' %>
 
-  <%= f.label :company, "Company" %>
-  <%= fields_for Company.new do |company| %>
-      <%= f.text_field :company, class: 'form-control' %>
-  <% end %>
+  <div class="form-group">
+    <%= f.label company, "Company" %>
+    <%= fields_for company do |company| %>
+        <%= company.text_field :name, class: 'form-control' %>
+    <% end %>
+  </div>
 
   <br>
   
-  <%= f.label :details, "Deal details" %> <span class="detail-counter pull-right"></span>
-  <%= f.text_area :details, placeholder: "Describe the details of your deal in 140 characters or less", class: 'form-control' %>
+  <div class="form-group">
+    <%= f.label :details, "Deal details" %> <span class="detail-counter pull-right"></span>
+    <%= f.text_area :details, placeholder: "Describe the details of your deal in 140 characters or less", class: 'form-control' %>
+  </div>
 
   <br>
 
   <div class="row">
     <div class="col-xs-6">
-
+      <div class="form-group">
         <%= f.label :link, "Link to deal" %>
         <%= f.text_field :link, class: 'form-control' %>
-
+      </div>
     </div>
 
     <div class="col-xs-6">
-      
+      <div class="form-group">
         <%= f.label :expiration, "Expiration? (Optional)" %>
         <%= f.date_field :expiration, class: 'form-control' %>
+      </div>
     </div>
   </div>
 
@@ -33,13 +41,17 @@
 
   <div class="row">
     <div class="col-xs-6">
+      <div class="form-group">
         <%= f.label :code, "Referral code (Optional)" %>
         <%= f.text_field :code, class: 'form-control' %>
+      </div>
     </div>
 
     <div class="col-xs-6">
+      <div class="form-group">
         <%= f.label :limit, "Limit (Optional)" %>
         <%= f.text_field :limit, class: 'form-control' %>
+      </div>
     </div>
   </div>
 
