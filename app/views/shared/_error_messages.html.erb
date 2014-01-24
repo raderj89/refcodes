@@ -1,6 +1,7 @@
 <% if @referral.errors.any? %>
   <div id="error-explanation">
     <div class="alert alert-block alert-warning">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
       <h4>The form contains <%= pluralize(@referral.errors.count, "error") %>.</h4>
       <ul>
       <% @referral.errors.full_messages.each do |msg| %>
