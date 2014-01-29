@@ -1,5 +1,1 @@
-<%= link_to "Claim this", referral_claim_path(referral), remote: true, class: 'btn btn-info' %>
-
-<div class="js-referral-<%= referral.id %>-claims">
-  <%= pluralize(referral.claims.count, 'claim') %> 
-</div>
+<%= link_to "Claim this", referral_claim_path(referral), remote: true, class: 'btn btn-warning claim-button' %>

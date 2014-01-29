@@ -9,6 +9,11 @@ namespace :db do
                       details: "$100 off a really sweet deal!",
                       link: "https://www.bloc.io/?ref_token=OTU3NzA"
                       )
+      rand(5..10).times do 
+        company.referrals.each do |referral|
+          referral.claims.create!
+        end
+      end
     end
   end
 end

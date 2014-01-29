@@ -52,3 +52,16 @@
 .referral.hover {
   background: #FAFAFA;
 }
+
+.claim-button {
+  vertical-align: middle;
+}
+
+.claim-count {
+  font-size: 24px;
+}
+
+.social-share-buttons {
+  display: inline-block;
+  vertical-align: middle;
+}

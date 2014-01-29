@@ -8,8 +8,6 @@ FactoryGirl.define do
     company
     details "Lorem ipsum"
     link    "http://example.com"
-    after :build do |claim, ev|
-      referral.claims << build(:claim)
   end
 
   factory :claim do
