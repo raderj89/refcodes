@@ -19,8 +19,12 @@
   </div>
   <div class="col-md-8">
     <div class="referrals-list js-referrals">
+      <% if @referrals.any? %>
         <%= render partial: 'referral', collection: @referrals %>
     </div>
+    <% else %>
+      No referrals posted yet!
+    <% end %>
   </div>
 </div>
 
