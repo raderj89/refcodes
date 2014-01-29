@@ -37,4 +37,30 @@ describe Referral do
     it { should_not be_valid }
   end
 
+  describe "when company_id is not present" do
+    before { @referral.company_id = nil }
+    it { should_not be_valid }
+  end
+
+  describe "claim associations" do
+    before { @referral.save }
+
+    let!(:first_claim) do
+      FactoryGirl.create(:claim, referral: @referral)
+    end
+    let!(:second_claim) do
+      FactoryGirl.create(:claim, referral: @referral)
+    end
+
+    it "should destroy associated claims" do
+      claims = @referral.claims.to_a
+
+      @referral.destroy
+
+      expect(claims).not_to be_empty
+      claims.each do |claim|
+        expect(Claim.where(id: claim.id)).to be_empty
+      end
+    end
+  end
 end
