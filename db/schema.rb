@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140120165005) do
+ActiveRecord::Schema.define(version: 20140128184908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "claims", force: true do |t|
+    t.integer  "referral_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "claims", ["referral_id"], name: "index_claims_on_referral_id", using: :btree
 
   create_table "companies", force: true do |t|
     t.string   "name"

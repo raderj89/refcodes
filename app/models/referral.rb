@@ -5,4 +5,5 @@ class Referral < ActiveRecord::Base
   validates :link, presence: true, url: true
 
   belongs_to :company
+  has_many :claims
 end

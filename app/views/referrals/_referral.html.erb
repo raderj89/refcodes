@@ -1,3 +1,4 @@
+<% if @referrals.any? %>
 <div class="referral">
   <div class="row">
       <div class="col-md-6">
@@ -25,9 +26,15 @@
           <%#= render_shareable %>
           <div class="buttons">
 
-            <a href="https://twitter.com/share" class="twitter-share-button" data-text='<%= "Get \"#{referral.details}\" from #{referral.link}" %>' data-via="refcodes" data-count="none">Tweet</a>
-            <div class="fb-share-button fb-share" data-href="<%= referral.link %>" data-type="button"></div>
+            <%= render partial: 'claims/claimer', locals: { referral: referral } %>
+
+            <!-- <a href="https://twitter.com/share" class="twitter-share-button" data-text='<%= "Get \"#{referral.details}\" from #{referral.link}" %>' data-via="refcodes" data-count="none">Tweet</a>
+            <div class="fb-share-button fb-share" data-href="<%= referral.link %>" data-type="button"></div> -->
+
           </div>
       </div>
     </div>
 </div>
+<% else %>
+  No referrals posted yet!
+<% end %>

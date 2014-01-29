@@ -14,26 +14,32 @@ describe "Referral pages" do
     it { should have_title('Refcodes') }
 
     describe "referrals" do
+      it { should have_content(r1.company.name) }
       it { should have_content(r1.details) }
+      it { should have_content(r1.link) }
+      it { should have_content(r2.company.name) }
       it { should have_content(r2.details) }
+      it { should have_content(r2.link) }
     end
 
     describe "referral creation" do
+      before { visit root_path }
 
       describe "with invalid information" do
+
         it "should not create a referral" do
           expect { click_button "Submit" }.not_to change(Referral, :count)
         end
 
-        #describe "error messages" do
-        #  before { click_button "Submit" }
-        #  it { should have_content('error') }
-        #end
+        describe "error messages" do
+          before { click_button "Submit" }
+          it { should have_content('error') }
+        end
       end
 
       describe "with valid information" do
 
-        before { fill_in 'referral_company', with: "Bloc" }
+        before { fill_in 'company_name', with: "Bloc" }
         before { fill_in 'referral_details', with: "Lorem ipsum" }
         before { fill_in 'referral_link', with: "http://example.com" }
         it "should create a referral" do

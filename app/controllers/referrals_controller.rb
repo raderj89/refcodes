@@ -6,6 +6,7 @@ class ReferralsController < ApplicationController
     @company = Company.new
     @referral = Referral.new
     @referrals = Referral.all
+
   end
 
   def create

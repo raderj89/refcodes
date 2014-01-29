@@ -14,6 +14,7 @@ describe Referral do
   it { should respond_to(:details) }
   it { should respond_to(:link) }
   it { should respond_to(:company_id) }
+  it { should respond_to(:claims) }
   it { should be_valid }
 
   describe "when details are not present" do
