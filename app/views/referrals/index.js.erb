@@ -1,0 +1,9 @@
+var partial = '<%= escape_javascript( render partial: "referral", collection: @referrals ) %>';
+var path = '<%="#{root_path page: @referrals.next_page }" %>';
+
+$('a.load-more-referrals').before(partial);
+$('a.load-more-referrals').attr('href', path);
+ 
+<% unless @referrals.next_page %>
+  $('a.load-more-referrals').remove();
+<% end %>

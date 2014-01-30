@@ -1,66 +1,78 @@
-<%= form_for referral, remote: true do |f| %>
-  <h2>Add Referral</h2>
-  <div id="notice">
-    <%= render partial: 'shared/flash', locals: { flash: flash } %>
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h1>Add Referral</h1>
   </div>
-  <%= render 'shared/error_messages' %>
 
-  <div class="form-group">
-    <%= f.label company, "Company" %>
-    <%= fields_for company do |company| %>
-        <%= company.text_field :name, class: 'form-control' %>
+  <div class="panel-body">
+    <%= form_for referral, remote: true do |f| %>
+    <div id="notice">
+      <%= render partial: 'shared/flash', locals: { flash: flash } %>
+    </div>
+    <%= render 'shared/error_messages' %>
+
+    <div class="form-group">
+      <%= f.label company, "Company*" %>
+      <%= fields_for company do |company| %>
+          <%= company.text_field :name, class: 'form-control' %>
+      <% end %>
+    </div>
+
+    <br>
+    
+    <div class="form-group">
+      <%= f.label :details, "Deal details*" %> <span class="detail-counter pull-right"></span>
+      <%= f.text_area :details, placeholder: "Describe the details of your deal in 140 characters or less", class: 'form-control' %>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group">
+          <%= f.label :link, "Link to deal*" %>
+          <%= f.text_field :link, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="col-xs-6">
+        <div class="form-group">
+          <%= f.label :expiration, "Expiration?" %>
+          <%= f.date_field :expiration, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group">
+          <%= f.label :code, "Referral code" %>
+          <%= f.text_field :code, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="col-xs-6">
+        <div class="form-group">
+          <%= f.label :limit, "Limit" %>
+          <%= f.text_field :limit, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+
+    <p>* = Required Fields</p>
+
+    <br>
+
+    <%= f.submit "Submit", class: 'btn btn-lg btn-block btn-success' %>
+
     <% end %>
   </div>
-
-  <br>
-  
-  <div class="form-group">
-    <%= f.label :details, "Deal details" %> <span class="detail-counter pull-right"></span>
-    <%= f.text_area :details, placeholder: "Describe the details of your deal in 140 characters or less", class: 'form-control' %>
-  </div>
-
-  <br>
-
-  <div class="row">
-    <div class="col-xs-6">
-      <div class="form-group">
-        <%= f.label :link, "Link to deal" %>
-        <%= f.text_field :link, class: 'form-control' %>
-      </div>
-    </div>
-
-    <div class="col-xs-6">
-      <div class="form-group">
-        <%= f.label :expiration, "Expiration? (Optional)" %>
-        <%= f.date_field :expiration, class: 'form-control' %>
-      </div>
-    </div>
-  </div>
-
-  <br>
-
-  <div class="row">
-    <div class="col-xs-6">
-      <div class="form-group">
-        <%= f.label :code, "Referral code (Optional)" %>
-        <%= f.text_field :code, class: 'form-control' %>
-      </div>
-    </div>
-
-    <div class="col-xs-6">
-      <div class="form-group">
-        <%= f.label :limit, "Limit (Optional)" %>
-        <%= f.text_field :limit, class: 'form-control' %>
-      </div>
-    </div>
-  </div>
-
-  <br>
-
-  <%= f.submit "Submit", class: 'btn btn-lg btn-block btn-primary' %>
-<% end %>
+</div>
 
 <script type="text/javascript">
   var elem = $(".detail-counter");
   $("#referral_details").limiter(140, elem);
+
+
 </script>

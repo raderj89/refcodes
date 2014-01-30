@@ -13,44 +13,25 @@
  *= require_tree .
  */
 
+.affix {
+  width: 360px;
+  top: 60px; 
+}
+
 .message {
   margin-top: 22px;
 }
 
-.referrals-list {
-  max-height: 1000px;
-  overflow: scroll;
-  border-left: 1px solid #ccc;
-  padding-left: 15px;
-}
-
-.ref-form {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 5px 5px 2px #ccc;
-  padding-bottom: 10px;
-}
-
-.social-share {
-  min-height: 145px !important;
-}
-
-.buttons {
-  position: absolute;
-  bottom: 0;
-}
-
-.fb-share {
-  vertical-align: top;
-}
-
-.referral {
-  border-bottom: solid 1px #CCC;
-  padding: 5px 0;
+.referral-details {
+  margin-top: 0px;
 }
 
 .referral.hover {
   background: #FAFAFA;
+}
+
+.buttons {
+  padding-top: 25px;
 }
 
 .claim-button {
@@ -64,4 +45,10 @@
 .social-share-buttons {
   display: inline-block;
   vertical-align: middle;
+}
+
+input[type=date]::-webkit-inner-spin-button,
+input[type=date]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

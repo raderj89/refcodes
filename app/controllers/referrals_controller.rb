@@ -5,8 +5,12 @@ class ReferralsController < ApplicationController
   def index
     @company = Company.new
     @referral = Referral.new
-    @referrals = Referral.all
+    @referrals = Referral.paginate(page: params[:page], per_page: 3)
 
+    respond_to do |format|
+      format.html # index.html.erb
+      format.js
+    end
   end
 
   def create

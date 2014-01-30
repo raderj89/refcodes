@@ -6,4 +6,6 @@ class Referral < ActiveRecord::Base
 
   belongs_to :company
   has_many :claims, dependent: :destroy
+
+  self.per_page = 10
 end

@@ -4,7 +4,7 @@
     Referral discounts for great tech<br>
     products and services
   </div>
-  <div class="col-md-6 message">
+  <div class="col-sm-6 message">
     Share referral discounts for your favorite web products and services, and redeem discounts for other products and services you want to try out. Oh, and if you see that there is already a post for the same referral deal, don't duplicate it. Otherwise, we might remove it.
     <br>
     <span class="pull-right">Thanks!</span>
@@ -12,19 +12,21 @@
 </div>
 <hr>
 <div class="row">
-  <div class="col-md-4 ref-form">
-    <div class="js-ref-form">
-      <%= render partial: 'form', locals: { referral: @referral, company: @company } %>
-    </div>
+  <div class="col-sm-4">
+      <div class="js-ref-form">
+        <div id="ref-form" class="hidden-xs" data-spy="affix" data-offset-top="100">
+        <%= render partial: 'form', locals: { referral: @referral, company: @company } %>
+      </div>
+      </div>
   </div>
   <div class="col-md-8">
     <div class="referrals-list js-referrals">
       <% if @referrals.any? %>
         <%= render partial: 'referral', collection: @referrals %>
+        <%= link_to 'Load More Referrals', root_path(page: @referrals.next_page), :class => 'load-more-referrals', :remote => true if @referrals.next_page %>
     </div>
-    <% else %>
-      No referrals posted yet!
-    <% end %>
+      <% else %>
+        No referrals posted yet!
+      <% end %>
   </div>
 </div>
-
