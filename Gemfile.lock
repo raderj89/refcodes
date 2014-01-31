@@ -104,6 +104,10 @@ GEM
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     pg (0.15.1)
+    pg_search (0.7.3)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     polyglot (0.3.3)
     pry (0.9.12.4)
       coderay (~> 1.0)
@@ -169,9 +173,6 @@ GEM
       multi_json (~> 1.0)
       rubyzip (< 1.0.0)
       websocket (~> 1.0.4)
-    shareable (0.0.2)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     slop (3.4.7)
     social-share-button (0.1.5)
     spork (1.0.0rc4)
@@ -223,6 +224,7 @@ DEPENDENCIES
   jbuilder (= 1.0.2)
   jquery-rails (= 3.0.4)
   pg (= 0.15.1)
+  pg_search
   pry-rails
   quiet_assets
   rails (= 4.0.2)
@@ -231,7 +233,6 @@ DEPENDENCIES
   sass-rails (= 4.0.1)
   sdoc (= 0.3.20)
   selenium-webdriver (= 2.35.1)
-  shareable
   social-share-button
   spork-rails (= 4.0.0)
   turbolinks (= 1.1.1)

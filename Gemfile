@@ -7,8 +7,8 @@ gem 'pg', '0.15.1'
 gem 'bootstrap-sass'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
-gem 'shareable'
 gem 'social-share-button'
+gem 'pg_search'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
