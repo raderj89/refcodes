@@ -1,1 +1,1 @@
-<%= link_to "Claim this", referral_claim_path(referral), remote: true, class: 'btn btn-success claim-button' %>
+<%= link_to "Claim this", referral_claim_path(referral), onclick: "var w = window.open(\"#{referral.link}\"); w.focus(); return false;", remote: true, class: 'btn btn-success claim-button' %>
