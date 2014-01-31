@@ -5,7 +5,7 @@ class ReferralsController < ApplicationController
   def index
     @company = Company.new
     @referral = Referral.new
-    @referrals = Referral.joins(:company, :claims).paginate(page: params[:page], per_page: 3)
+    @referrals = Referral.joins(:company).includes(:claims).paginate(page: params[:page], per_page: 3)
 
     respond_to do |format|
       format.html
