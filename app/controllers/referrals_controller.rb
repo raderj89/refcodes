@@ -8,7 +8,7 @@ class ReferralsController < ApplicationController
     @referrals = Referral.paginate(page: params[:page], per_page: 3)
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.js
     end
   end
@@ -47,5 +47,3 @@ class ReferralsController < ApplicationController
       params.require(:company).permit(:name)
     end
 end
-
-#params.require(:referral).permit(permit(:company, :details, :link, :expiration, :code, :limit)).merge(company_id: @company.id)

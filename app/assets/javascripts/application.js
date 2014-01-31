@@ -16,5 +16,4 @@
 //= require limiter.js
 //= require jquery.inview.min.js
 //= require social-share-button
-//= require jquery.sticky.js
 //= require_tree .
