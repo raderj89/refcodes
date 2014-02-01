@@ -8,7 +8,7 @@ class Referral < ActiveRecord::Base
   belongs_to :company
   has_many :claims, dependent: :destroy
 
-  self.per_page = 3
+  self.per_page = 10
 
   def update_rank
     age = (self.created_at - Time.new(1970,1,1)) / 86400
