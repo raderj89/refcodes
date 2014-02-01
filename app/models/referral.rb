@@ -8,4 +8,18 @@ class Referral < ActiveRecord::Base
   has_many :claims, dependent: :destroy
 
   self.per_page = 10
+
+  include PgSearch
+
+  pg_search_scope :search, against: [:details],
+    using: {tsearch: {dictionary: "english"}},
+    associated_against: {company: :name}
+
+  def self.text_search(query)
+    if query.present?
+      search(query)
+    else
+      all
+    end
+  end
 end

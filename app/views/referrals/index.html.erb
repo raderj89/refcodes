@@ -12,8 +12,20 @@
   </div>
   <hr>
   <div class="row">
+    <div class="col-md-4">
+
+    </div>
+  </div>
+  <div class="row">
     <div class="col-sm-4 hidden-xs">
       <div id="ref-form" class="hidden-xs" data-spy="affix" data-offset-top="100">
+        <%= form_tag root_path, method: :get, class: 'form-inline', role: 'search' do %>
+          <div class="form-group" style="width: 78.5%;">
+            <%= text_field_tag :query, params[:query], class: 'form-control' %>
+          </div>
+          <%= submit_tag "Search", class: 'btn btn-default', name: nil %>
+        <% end %>
+        <br>
         <div class="js-ref-form">
           <%= render partial: 'form', locals: { referral: @referral, company: @company } %>
         </div>
