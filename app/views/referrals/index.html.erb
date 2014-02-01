@@ -4,7 +4,7 @@
       Referral discounts for great tech<br>
       products and services
     </div>
-    <div class="col-xs-6 message">
+    <div class="col-sm-6 message">
       Share referral discounts for your favorite web products and services, and redeem discounts for other products and services you want to try out. Oh, and if you see that there is already a post for the same referral deal, don't duplicate it. Otherwise, we might remove it.
       <br>
       <span class="pull-right">Thanks!</span>
@@ -35,6 +35,21 @@
         </div>
       </div>
     </div>
+    <div class="col-sm-8 visible-xs">
+      
+        <%= link_to "Latest Referrals", root_path, class: 'btn btn-default latest', style: 'width:45%;' %>
+        <%= link_to "Most Popular", root_path(most_popular: true), class: 'btn btn-info most-popular', style: 'width:45%;' %>
+        <br>
+        <br>
+        <%= form_tag root_path, method: :get, class: 'form-inline', role: 'search' do %>
+          <div class="form-group search-small">
+            <%= text_field_tag :query, params[:query], class: 'form-control' %>
+          </div>
+          <%= submit_tag "Search", class: 'btn btn-default', name: nil %>
+        <% end %>
+
+    </div>
+    <br>
     <div class="col-sm-8">
       <div class="referrals-list js-referrals">
         <% if @referrals.any? %>
