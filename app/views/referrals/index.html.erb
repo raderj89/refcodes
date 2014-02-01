@@ -19,6 +19,10 @@
   <div class="row">
     <div class="col-sm-4 hidden-xs">
       <div id="ref-form" class="hidden-xs" data-spy="affix" data-offset-top="100">
+        <%= link_to "Latest Referrals", root_path, class: 'btn btn-default latest', style: 'width:48%;' %>
+        <%= link_to "Most Popular", root_path(most_popular: true), class: 'btn btn-info most-popular', style: 'width:48%;' %>
+        <br>
+        <br>
         <%= form_tag root_path, method: :get, class: 'form-inline', role: 'search' do %>
           <div class="form-group" style="width: 78.5%;">
             <%= text_field_tag :query, params[:query], class: 'form-control' %>

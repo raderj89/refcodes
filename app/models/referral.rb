@@ -1,4 +1,5 @@
 class Referral < ActiveRecord::Base
+  scope :most_popular, -> { order('rank DESC') }
   default_scope -> { order('created_at DESC') }
   validates :company_id, presence: true
   validates :details, presence: true, length: { maximum: 140 }
@@ -7,7 +8,14 @@ class Referral < ActiveRecord::Base
   belongs_to :company
   has_many :claims, dependent: :destroy
 
-  self.per_page = 10
+  self.per_page = 3
+
+  def update_rank
+    age = (self.created_at - Time.new(1970,1,1)) / 86400
+    new_rank = self.claims.count + age
+
+    self.update_attribute(:rank, new_rank)
+  end
 
   include PgSearch
 
