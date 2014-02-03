@@ -49,3 +49,25 @@ input[type=date]::-webkit-outer-spin-button {
   width: 70%;
   margin-right: 10px;
 }
+
+.search-form {
+  position: static;
+}
+
+// @media (min-width: 768px) {
+//   .ref-form {
+//     width: 250px;
+//   }
+// }
+
+// @media (min-width: 992px) {
+//   .ref-form {
+//     width: 300px;
+//   }
+// }
+
+// @media (min-width: 1200px) {
+//   .ref-form {
+//     width: 360px;
+//   }
+// }

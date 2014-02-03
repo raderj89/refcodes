@@ -24,7 +24,10 @@
         <%= render partial: 'claims/claimer', locals: { referral: referral } %>
 
         <div class="social-share-buttons">
-          <%= social_share_button_tag(referral.link) %>
+          <%= social_share_button_tag("#{referral.details} from #{referral.link} via @Refcodes") %>
+
+
+          
               <!-- <a href="https://twitter.com/share" class="twitter-share-button" data-text='<%= "Get \"#{referral.details}\" from #{referral.link}" %>' data-via="refcodes" data-count="none">Tweet</a>
               <div class="fb-share-button fb-share" data-href="<%= referral.link %>" data-type="button"></div> -->
         </div>
