@@ -13,4 +13,10 @@ FactoryGirl.define do
   factory :claim do
     referral
   end
+
+  factory :admin do
+    email "admin@example.com"
+    password "helloworld"
+    password_confirmation "helloworld"
+  end
 end
