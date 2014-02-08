@@ -23,5 +23,6 @@ doc/
 .idea
 .secret
 /config/database.yml
+database.yml
 # Ignore application configuration
 /config/application.yml
