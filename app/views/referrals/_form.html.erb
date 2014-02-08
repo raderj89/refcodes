@@ -1,6 +1,6 @@
 <div class="panel panel-success">
   <div class="panel-heading">
-    <h1>Add Referral</h1>
+    <h4>Add Referral</h4>
   </div>
 
   <div class="panel-body">
@@ -16,15 +16,11 @@
           <%= company.text_field :name, class: 'form-control' %>
       <% end %>
     </div>
-
-    <br>
     
     <div class="form-group">
       <%= f.label :details, "Deal details*" %> <span class="detail-counter pull-right"></span>
       <%= f.text_area :details, placeholder: "Describe the details of your deal in 140 characters or less", class: 'form-control' %>
     </div>
-
-    <br>
 
     <div class="row">
       <div class="col-xs-6">
@@ -41,8 +37,6 @@
         </div>
       </div>
     </div>
-
-    <br>
 
     <div class="row">
       <div class="col-xs-6">
@@ -61,8 +55,6 @@
     </div>
 
     <p>* = Required Fields</p>
-
-    <br>
 
     <%= f.submit "Submit", class: 'btn btn-lg btn-block btn-success' %>
 

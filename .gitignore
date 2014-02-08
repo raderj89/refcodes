@@ -20,7 +20,8 @@ doc/
 .DS_Store
 .idea
 .secret
-.ruby-version
-.ruby-gemset
 # Ignore application configuration
 /config/application.yml
+database.yml
+.ruby-version
+.ruby-gemset
