@@ -1,6 +1,7 @@
 class ReferralsController < ApplicationController
-  require 'will_paginate/array'
   respond_to :html, :js
+
+  before_filter :authenticate_admin!, only: [:edit, :update, :destroy]
 
   def index
     @company = Company.new
@@ -20,7 +21,8 @@ class ReferralsController < ApplicationController
     @referral = @company.referrals.build(referral_params)
     @new_referral = Referral.new
     @new_company = Company.new
-
+    @referrals = Referral.text_search(params[:query]).joins(:company).includes(:claims)
+                 .paginate(page: params[:page], per_page: 3)
     if @referral.save
       flash.now[:success] = "Referral submitted!"
     end
@@ -37,6 +39,9 @@ class ReferralsController < ApplicationController
   end
 
   def destroy
+    @referral = Referral.find(params[:id]).destroy
+    flash[:warning] = "Referral obliterated."
+    redirect_to root_url
   end
 
   private

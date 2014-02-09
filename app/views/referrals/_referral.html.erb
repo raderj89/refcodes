@@ -36,6 +36,14 @@
           <%= pluralize(referral.claims.count, 'claim') %> 
         </span>
       </div>
+
+      <% if admin_signed_in? %>
+      <br>
+        <div class="admin-controls">
+          <%= link_to "Edit", edit_referral_path(referral), class: 'btn btn-default' %>
+          <%= link_to "Delete", referral, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
