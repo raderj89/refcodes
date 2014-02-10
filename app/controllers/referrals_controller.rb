@@ -1,5 +1,6 @@
 class ReferralsController < ApplicationController
   respond_to :html, :js
+  require 'will_paginate/array'
 
   before_filter :authenticate_admin!, only: [:edit, :update, :destroy]
 
