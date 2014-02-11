@@ -52,6 +52,9 @@
     <!-- for large screens -->
     
     <div class="col-sm-8 visible-lg">
+      <div id="notice">
+        <%= render partial: 'shared/flash', locals: { flash: flash } %>
+      </div>
       <div class="referrals-list js-referrals">
         <% if @referrals.any? %>
           <%= render partial: 'referral', collection: @referrals %>
