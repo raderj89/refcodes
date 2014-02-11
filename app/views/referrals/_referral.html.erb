@@ -33,7 +33,7 @@
         </div>
 
         <span class="js-referral-<%= referral.id %>-claims claim-count">
-          <%= pluralize(referral.claims.count, 'claim') %> 
+          <%= pluralize((referral.claims.count - 1), 'claim') %> 
         </span>
       </div>
 
