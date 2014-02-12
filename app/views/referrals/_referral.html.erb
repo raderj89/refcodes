@@ -4,7 +4,7 @@
       <h4><%= referral.company.name %></h4>
       <h3 class="referral-details"><%= referral.details %></h3>
       <small>
-        Link: <%= referral.link %>
+        Link: <%= link_to "#{referral.link}", referral.link %>
         <br>
         <% unless referral.code.nil? || referral.code.empty? %>
         Code: <%= referral.code %>
