@@ -11,6 +11,7 @@ gem 'social-share-button'
 gem 'pg_search'
 gem 'devise'
 gem 'bitly'
+gem 'figaro'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'

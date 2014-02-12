@@ -37,4 +37,5 @@ class Referral < ActiveRecord::Base
   def create_claim
     self.claims.create
   end
+
 end
