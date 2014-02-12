@@ -24,7 +24,7 @@
         <%= render partial: 'claims/claimer', locals: { referral: referral } %>
 
         <div class="social-share-buttons">
-          <%= social_share_button_tag("#{referral.details} #{referral.link} via @Refcodes", url: "http://refcod.es") %>
+          <%= social_share_button_tag("#{referral.details} #{@bitly.shorten(referral.link).short_url} via @Refcodes", url: "http://refcod.es") %>
         </div>
 
         <span class="js-referral-<%= referral.id %>-claims claim-count">
