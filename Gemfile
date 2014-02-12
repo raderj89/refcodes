@@ -10,6 +10,7 @@ gem 'will_paginate', '3.0.4'
 gem 'social-share-button'
 gem 'pg_search'
 gem 'devise'
+gem 'bitly'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
