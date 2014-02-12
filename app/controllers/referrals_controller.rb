@@ -6,7 +6,7 @@ class ReferralsController < ApplicationController
   before_filter :authenticate_admin!, only: [:edit, :update, :destroy]
 
   def index
-    #@bitly = Bitly.client
+    @bitly = Bitly.client
     @company = Company.new
     @referral = Referral.new
     @referrals = Referral.text_search(params[:query]).joins(:company).includes(:claims)
