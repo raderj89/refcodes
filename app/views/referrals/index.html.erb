@@ -3,6 +3,11 @@
     <div class="col-sm-4 hidden-xs">
       <div class="ref-form-parent">
         <div class="ref-form hidden-xs" data-spy="affix" data-offset-top="100">
+          <%= link_to "Popular Now", root_path, class: 'btn btn-success filter-btn', style: 'width:31%;' %>
+          <%= link_to "Latest", root_path(latest: true), class: 'btn btn-info filter-btn', style: 'width:31%;' %>
+          <%= link_to "Most Claimed", root_path(all_time: true), class: 'btn btn-warning filter-btn', style: 'width:31%;' %>
+          <br>
+          <br>
           <%= form_tag root_path, method: :get, class: 'form-inline', role: 'search' do %>
             <div class="form-group" style="width: 78.5%;">
               <%= text_field_tag :query, params[:query], class: 'form-control' %>
@@ -18,8 +23,9 @@
     </div>
     <div class="col-xs-12 visible-xs">
       <div class="search-form">
-        <%= link_to "Latest Referrals", root_path, class: 'btn btn-default latest', style: 'width:45%;' %>
-        <%= link_to "Most Popular", root_path(most_popular: true), class: 'btn btn-info most-popular', style: 'width:45%;' %>
+        <%= link_to "Popular", root_path(most_popular: true), class: 'btn btn-success', style: 'width:30%;' %>
+        <%= link_to "Latest", root_path, class: 'btn btn-info', style: 'width:30%;' %>
+        <%= link_to "All Time", root_path(all_time: true), class: 'btn btn-warning', style: 'width:30%;' %>
         <br>
         <br>
         <%= form_tag root_path, method: :get, class: 'form-inline', role: 'search' do %>
@@ -38,8 +44,7 @@
       <div id="notice">
         <%= render partial: 'shared/flash', locals: { flash: flash } %>
       </div>
-       <%= link_to "Latest Referrals", root_path(latest: true), class: 'btn btn-default latest', style: 'width:48%;' %>
-       <%= link_to "Most Popular", root_path, class: 'btn btn-info most-popular', style: 'width:48%;' %>
+
       <div class="referrals-list js-referrals">
         <% if @referrals.any? %>
           <%= render partial: 'referral', collection: @referrals %>
@@ -54,6 +59,7 @@
 
     <div class="col-sm-6 col-sm-offset-1 visible-md">
       <div class="referrals-list js-referrals">
+
         <% if @referrals.any? %>
           <%= render partial: 'referral', collection: @referrals %>
           <%= link_to 'Load More Referrals', root_path(page: @referrals.next_page), :class => 'load-more-referrals', :remote => true if @referrals.next_page %>
@@ -67,6 +73,7 @@
 
     <div class="col-sm-5 col-sm-offset-2 visible-sm">
       <div class="referrals-list js-referrals">
+
         <% if @referrals.any? %>
           <%= render partial: 'referral', collection: @referrals %>
           <%= link_to 'Load More Referrals', root_path(page: @referrals.next_page), :class => 'load-more-referrals', :remote => true if @referrals.next_page %>

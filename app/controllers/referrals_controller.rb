@@ -12,7 +12,11 @@ class ReferralsController < ApplicationController
     if params[:latest]
       @referrals = Referral.text_search(params[:query]).joins(:company).includes(:claims)
                  .paginate(page: params[:page], per_page: 10)
-    else
+    elsif params[:all_time]
+       @referrals = Referral.find_by_sql("SELECT referrals.*, COUNT(claims.id) AS num_claims FROM referrals
+                                            JOIN claims ON claims.referral_id = referrals.id
+                                          GROUP BY referrals.id ORDER BY num_claims DESC").paginate(page: params[:page], per_page: 10)
+     else
       @referrals = Referral.find_by_sql("SELECT referrals.* FROM referrals ORDER BY rank DESC").paginate(page: params[:page], per_page: 10)
     end
     respond_to do |format|
