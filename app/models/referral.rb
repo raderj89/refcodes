@@ -1,5 +1,5 @@
 class Referral < ActiveRecord::Base
-  scope :most_popular, -> { order('rank DESC') }
+
   default_scope -> { order('created_at DESC') }
   validates :company_id, presence: true
   validates :details, presence: true, length: { maximum: 140 }
