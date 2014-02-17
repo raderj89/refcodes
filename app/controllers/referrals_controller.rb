@@ -9,12 +9,9 @@ class ReferralsController < ApplicationController
     #@bitly = Bitly.client
     @company = Company.new
     @referral = Referral.new
-    if params[:latest]
-      @referrals = Referral.text_search(params[:query]).joins(:company).includes(:claims)
-                 .paginate(page: params[:page], per_page: 10)
-    else
-      @referrals = Referral.find_by_sql("SELECT referrals.* FROM referrals ORDER BY rank DESC").paginate(page: params[:page], per_page: 10)
-    end
+    @referrals = Referral.text_search(params[:query]).joins(:company).includes(:claims)
+                 .paginate(page: params[:page], per_page: 3)
+    @referrals = Referral.find_by_sql("SELECT referrals.* FROM referrals ORDER BY rank DESC").paginate(page: params[:page], per_page: 10) if params[:most_popular]
     respond_to do |format|
       format.html
       format.js
