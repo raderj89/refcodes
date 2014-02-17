@@ -24,7 +24,7 @@ class ClaimsController < ApplicationController
   end
 
   def setup
-     @referral = Referral.find(claim_params)
+    @referral = Referral.find(claim_params)
   end
 
 end
