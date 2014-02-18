@@ -23,8 +23,8 @@
     </div>
     <div class="col-xs-12 visible-xs">
       <div class="search-form">
-        <%= link_to "Popular", root_path(most_popular: true), class: 'btn btn-success', style: 'width:30%;' %>
-        <%= link_to "Latest", root_path, class: 'btn btn-info', style: 'width:30%;' %>
+        <%= link_to "Popular", root_path, class: 'btn btn-success', style: 'width:30%;' %>
+        <%= link_to "Latest", root_path(latest: true), class: 'btn btn-info', style: 'width:30%;' %>
         <%= link_to "All Time", root_path(all_time: true), class: 'btn btn-warning', style: 'width:30%;' %>
         <br>
         <br>
