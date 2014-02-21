@@ -5,4 +5,5 @@
   $(".js-ref-form").html("<%= escape_javascript(render partial: 'form', locals: { referral: @referral, company: @company }) %>");
 <% end %>
 
+$(".js-referral-<%= @referral.id %>-claims").html('<%= pluralize(@referral.claims.count, 'claim') %>');
 $("#notice").html("<%= escape_javascript(render partial: 'shared/flash' , locals: { flash: flash }).html_safe %>");

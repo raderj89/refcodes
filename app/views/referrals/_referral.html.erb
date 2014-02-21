@@ -4,7 +4,7 @@
       <h4><%= referral.company.name %></h4>
       <h3 class="referral-details"><%= referral.details %></h3>
       <small>
-        Link: <%= link_to "#{referral.link}", referral.link %>
+        Link: <%= link_to "#{referral.link}", referral_claim_path(referral), onclick: "var w = window.open(\"#{referral.link}\"); w.focus(); return false;",  remote: true %>
         <br>
         <% unless referral.code.nil? || referral.code.empty? %>
         Code: <%= referral.code %>
