@@ -8,6 +8,7 @@ class Referral < ActiveRecord::Base
   belongs_to :company
   has_many :claims, dependent: :destroy
   after_create :create_claim
+  after_create :add_http
 
   self.per_page = 10
 
@@ -36,5 +37,12 @@ class Referral < ActiveRecord::Base
 
   def create_claim
     self.claims.create
+  end
+
+  def add_http
+    unless self.link.start_with?('http') || self.link.start_with?('https')
+      orig_link = self.link
+      self.link = "http://#{orig_link}"
+    end
   end
 end
