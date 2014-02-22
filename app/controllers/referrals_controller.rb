@@ -1,12 +1,10 @@
 class ReferralsController < ApplicationController
   respond_to :html, :js
   require 'will_paginate/array'
-  require 'bitly'
 
   before_filter :authenticate_admin!, only: [:edit, :update, :destroy]
 
   def index
-    #@bitly = Bitly.client
     @company = Company.new
     @referral = Referral.new
     if params[:latest]
