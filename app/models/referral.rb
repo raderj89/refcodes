@@ -43,6 +43,7 @@ class Referral < ActiveRecord::Base
     unless self.link.start_with?('http') || self.link.start_with?('https')
       orig_link = self.link
       self.link = "http://#{orig_link}"
+      self.save!
     end
   end
 end
