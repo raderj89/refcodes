@@ -1,5 +1,28 @@
 @import 'bootstrap';
 
+.logo {
+  float: left;
+  display: block;
+  margin-right: -25px;
+}
+
+.name {
+  z-index: -9999;
+  margin-bottom: 0;
+}
+
+.name p:first-letter {
+  visibility: hidden;
+}
+
+.tagline {
+  padding-left: 60px;
+}
+
+.follow {
+  margin-top: 10px;
+}
+
 .ref-form {
   width: 360px;
   top: 20px;
@@ -60,11 +83,20 @@ input[type=date]::-webkit-outer-spin-button {
 //   }
 // }
 
-// @media (min-width: 992px) {
-//   .ref-form {
-//     width: 300px;
-//   }
-// }
+@media (min-width: 992px) {
+  .logo {
+    margin-top: 20px;
+   }
+}
+
+@media (max-width: 1024px) {
+  .ref-form {
+    top: -18px;
+  }
+  .search-filter {
+    display: none;
+  }
+}
 
 // @media (min-width: 1200px) {
 //   .ref-form {

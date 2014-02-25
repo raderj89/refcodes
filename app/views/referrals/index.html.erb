@@ -2,11 +2,12 @@
   <div class="row">
     <div class="col-sm-4 hidden-xs">
       <div class="ref-form-parent">
-        <div class="ref-form hidden-xs" data-spy="affix" data-offset-top="100">
-          <%= link_to "Popular Now", root_path, class: 'btn btn-success filter-btn', style: 'width:31%;' %>
-          <%= link_to "Latest", root_path(latest: true), class: 'btn btn-info filter-btn', style: 'width:31%;' %>
-          <%= link_to "Most Claimed", root_path(all_time: true), class: 'btn btn-warning filter-btn', style: 'width:31%;' %>
-          <br>
+        <div class="ref-form hidden-xs" data-spy="affix" data-offset-top="60">
+          <div class="search-filter">
+            <%= link_to "Popular Now", root_path, class: 'btn btn-success filter-btn', style: 'width:31%;' %>
+            <%= link_to "Latest", root_path(latest: true), class: 'btn btn-info filter-btn', style: 'width:31%;' %>
+            <%= link_to "Most Claimed", root_path(all_time: true), class: 'btn btn-warning filter-btn', style: 'width:31%;' %>
+          </div>
           <br>
           <%= form_tag root_path, method: :get, class: 'form-inline', role: 'search' do %>
             <div class="form-group" style="width: 78.5%;">
