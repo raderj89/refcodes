@@ -1,0 +1,62 @@
+
+@mixin btn ($background, $color) {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;    
+	box-sizing: border-box;
+	height: 3em;
+  	width: 100%; 
+	font: $primary-font;
+	text-decoration: none;
+	padding: 0.5em;
+	border: solid 1px transparent;
+	background: $background;
+	color: $color;
+}
+
+@mixin social-btn ($background, $color) {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;    
+	box-sizing: border-box; 
+	font: $primary-font;
+	text-decoration: none;
+	padding: 0.5em;
+	border: solid 1px transparent;
+	background: $background;
+	color: $color;
+
+	height: 2.65em;
+  	font-size: 0.8em;
+  	float: left;
+  	margin-right: 1%;
+
+  	img {
+    	float: left;
+  	}
+}
+
+@mixin banner {
+	background: $charcoal;
+	color: $white;	
+	padding: 1.2em 0 1.2em 2em;
+	font: $primary-font;
+	text-transform: uppercase;
+	font-size: 0.8em;
+}
+
+@mixin menu {
+	background: $space-grey;
+	padding: 1.2em 2em 1.2em 2em;
+	color: $light-grey;
+	font: $secondary-font;
+	font-size: 0.8em;
+}
+ 
+
+@mixin deal {
+	font: $primary-font;
+	margin-bottom: 20pt;
+}
+
+
+
+
