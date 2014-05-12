@@ -1,45 +1,47 @@
 <div class="referral">
-  <div class="row">
-    <div class="col-md-12">
-      <h4><%= referral.company.name %></h4>
-      <h3 class="referral-details"><%= referral.details %></h3>
-      <small>
-        Link: <%= link_to "#{referral.link}", referral_claim_path(referral), onclick: "var w = window.open(\"#{referral.link}\"); w.focus(); return false;",  remote: true %>
-        <br>
-        <% unless referral.code.nil? || referral.code.empty? %>
-        Code: <%= referral.code %>
-        <br>
-        <% end %>
-        <% unless referral.expiration.nil? %>
-        Expires: <%= referral.expiration %>
-        <br>
-        <% end %>
-        <% unless referral.limit.nil? %>
-        Limit: <%= referral.limit %>
-        <br>
-        <% end %>
-      </small>
-      <div class="buttons">
+  <h2><%= referral.company.name %></h2>
+  <h3 class="referral-details"><%= referral.details %></h3>
+  <div class="details">
+    Link: <%= referral.link %>
+    <br>
+    <% unless referral.code.nil? || referral.code.empty? %>
+    Code: <%= referral.code %>
+    <br>
+    <% end %>
+    <% unless referral.expiration.nil? %>
+    Expires: <%= referral.expiration %>
+    <br>
+    <% end %>
+    <% unless referral.limit.nil? %>
+    Limit: <%= referral.limit %>
+    <br>
+    <!--Let's put the claims count here-->
+    <% end %>
+  </div>
 
-        <%= render partial: 'claims/claimer', locals: { referral: referral } %>
+  <div class="button-group">
 
-        <div class="social-share-buttons">
-          <%= social_share_button_tag("#{referral.details} #{referral.link} via @Refcodes", url: "http://refcod.es") %>
-        </div>
-
-        <span class="js-referral-<%= referral.id %>-claims claim-count">
-          <%= pluralize((referral.claims.count - 1), 'claim') %> 
-        </span>
+    <div class="three-buttons">
+      <!--<%= social_share_button_tag("#{referral.details} from #{referral.link} via @Refcodes") %>-->
+      <div class="fb-share-button" data-href="<%= referral.link %>" data-type="button"><%= image_tag('facebook.svg') %>
+      <div class="btn-text">Share</div>
       </div>
 
-      <% if admin_signed_in? %>
-      <br>
-        <div class="admin-controls">
-          <%= link_to "Edit", edit_referral_path(referral), class: 'btn btn-default' %>
-          <%= link_to "Delete", referral, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-        </div>
-      <% end %>
+      <div class="twitter-share-button" <a href="https://twitter.com/share" data-text='<%= "Get \"#{referral.details}\" from #{referral.link}" %>' data-via="refcodes" data-count="none"><%= image_tag('twitter.svg') %>
+      <div class="btn-text">Share</div></a>
+      </div>
+      
+      <div class="claim-button"><%= image_tag('refcodes.svg') %>
+      <div class="btn-text">Claim</div>
+      </div>
+
+      <!--<%= render partial: 'claims/claimer', locals: { referral: referral } %>-->
     </div>
+
+    <div class="claim-count">
+      <%= pluralize(referral.claims.count, 'claim') %> 
+    </div>
+    
   </div>
+
 </div>
-<hr>
