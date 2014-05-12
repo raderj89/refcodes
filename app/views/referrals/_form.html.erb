@@ -1,42 +1,46 @@
 <div class="form-group">
-
   <%= form_for referral, remote: true do |f| %>
     
     <div id="notice">
       <%= render partial: 'shared/flash', locals: { flash: flash } %>
     </div>
       <%= render 'shared/error_messages' %>
+    <fieldset>
+      <%= f.label company, "Company Name" %>
+      <%= fields_for company do |company| %>
+          <%= company.text_field :name %>
+      <% end %>
+    </fieldset>
+    
+    <fieldset>
+      <%= f.label :details, "Discount Details"  %> <span class="detail-counter pull-right"></span>
+      <%= f.text_area :details, placeholder: "e.g. $25 off your first purchase" %>
+    </fieldset>
 
     <fieldset>
-    <%= f.label company, "Company Name" %>
-    <%= fields_for company do |company| %>
-        <%= company.text_field :name %>
-    <% end %>
+      <%= f.label :link, "Link" %>    
+      <%= f.text_field :link %>
     </fieldset>
+
     <fieldset>
-    <%= f.label :details, "Discount Details"  %> <span class="detail-counter pull-right"></span>
-    <%= f.text_area :details, placeholder: "e.g. $25 off your first purchase" %>
+      <%= f.label :code, "Referral code" %>
+      <%= f.text_field :code %>
     </fieldset>
+
     <fieldset>
-    <%= f.label :link, "Link" %>    
-    <%= f.text_field :link %>
+      <%= f.label :expiration, "Expiration Date" %>
+      <%= f.date_field :expiration %>
     </fieldset>
+
     <fieldset>
-    <%= f.label :code, "Referral code" %>
-    <%= f.text_field :code %>
+      <%= f.label :limit, "Referral Limit" %>
+      <%= f.text_field :limit %>  
     </fieldset>
+
     <fieldset>
-    <%= f.label :expiration, "Expiration Date" %>
-    <%= f.date_field :expiration %>
+      <%= f.submit "Submit", class: 'post-button' %>
     </fieldset>
-    <fieldset>
-    <%= f.label :limit, "Referral Limit" %>
-    <%= f.text_field :limit %>  
-    </fieldset>
-    <fieldset>
-    <%= f.submit "Submit", class: 'post-button' %>
-    </fieldset>
-    <% end %>
+  <% end %>
 
 </div>
 

@@ -1,0 +1,105 @@
+@import 'bootstrap';
+
+.logo {
+  float: left;
+  display: block;
+  margin-right: -25px;
+}
+
+.name {
+  z-index: -9999;
+  margin-bottom: 0;
+}
+
+.name p:first-letter {
+  visibility: hidden;
+}
+
+.tagline {
+  padding-left: 60px;
+}
+
+.follow {
+  margin-top: 10px;
+}
+
+.ref-form {
+  width: 360px;
+  top: 20px;
+}
+
+.filter-btn {
+  margin-right: 5.5px;
+}
+
+.message {
+  margin-top: 22px;
+}
+
+.referral-details {
+  margin-top: 0px;
+}
+
+.referral.hover {
+  background: #FAFAFA;
+}
+
+.buttons {
+  padding-top: 25px;
+}
+
+.claim-button {
+  vertical-align: middle;
+}
+
+.claim-count {
+  font-size: 24px;
+}
+
+.social-share-buttons {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+input[type=date]::-webkit-inner-spin-button,
+input[type=date]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.search-small {
+  float: left;
+  width: 70%;
+  margin-right: 10px;
+}
+
+.search-form {
+  position: static;
+}
+
+// @media (min-width: 768px) {
+//   .ref-form {
+//     width: 250px;
+//   }
+// }
+
+@media (min-width: 992px) {
+  .logo {
+    margin-top: 20px;
+   }
+}
+
+@media (max-width: 1024px) {
+  .ref-form {
+    top: -18px;
+  }
+  .search-filter {
+    display: none;
+  }
+}
+
+// @media (min-width: 1200px) {
+//   .ref-form {
+//     width: 360px;
+//   }
+// }

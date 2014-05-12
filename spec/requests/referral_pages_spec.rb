@@ -59,5 +59,24 @@ describe "Referral pages" do
         expect { first('.buttons > a').click }.to change(Claim, :count).by(1)
       end
     end
+
+    describe "delete links" do
+      it { should_not have_link('delete')}
+
+      describe "as an admin" do
+        let(:admin) { FactoryGirl.create(:admin) }
+        before do
+          sign_in :admin
+          visit root_path
+        end
+
+        it { should have_link('delete', href: referral_path(Referral.first)) }
+        it "should be able to delete a referral" do
+          expect { click_link('delete', match: :first) }.to change(Referral, :count).by(-1)
+        end
+
+        it { should have_link('edit', href: referral_path(Referral.first)) }
+      end
+    end
   end
 end

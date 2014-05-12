@@ -1,14 +1,24 @@
 class ReferralsController < ApplicationController
-  require 'will_paginate/array'
   respond_to :html, :js
+  require 'will_paginate/array'
+
+  before_filter :authenticate_admin!, only: [:edit, :update, :destroy]
 
   def index
     @company = Company.new
     @referral = Referral.new
-    @referrals = Referral.text_search(params[:query]).joins(:company).includes(:claims)
-                 .paginate(page: params[:page], per_page: 3)
-    @referrals = Referral.find_by_sql("SELECT referrals.* FROM referrals ORDER BY rank DESC").paginate(page: params[:page], per_page: 10) if params[:most_popular]
-
+    if params[:latest]
+      @referrals = Referral.joins(:company).includes(:claims)
+                 .paginate(page: params[:page], per_page: 10)
+    elsif params[:all_time]
+       @referrals = Referral.find_by_sql("SELECT referrals.*, COUNT(claims.id) AS num_claims FROM referrals
+                                            JOIN claims ON claims.referral_id = referrals.id
+                                          GROUP BY referrals.id ORDER BY num_claims DESC").paginate(page: params[:page], per_page: 10)
+    elsif params[:query]
+      @referrals = Referral.text_search(params[:query]).joins(:company).includes(:claims).order('rank DESC').paginate(page: params[:page], per_page: 10)
+    else
+      @referrals = Referral.find_by_sql("SELECT referrals.* FROM referrals ORDER BY rank DESC").paginate(page: params[:page], per_page: 10)
+    end
     respond_to do |format|
       format.html
       format.js
@@ -20,7 +30,8 @@ class ReferralsController < ApplicationController
     @referral = @company.referrals.build(referral_params)
     @new_referral = Referral.new
     @new_company = Company.new
-
+    @referrals = Referral.text_search(params[:query]).joins(:company).includes(:claims)
+                 .paginate(page: params[:page], per_page: 3)
     if @referral.save
       flash.now[:success] = "Referral submitted!"
     end
@@ -37,6 +48,9 @@ class ReferralsController < ApplicationController
   end
 
   def destroy
+    @referral = Referral.find(params[:id]).destroy
+    flash[:warning] = "Referral obliterated."
+    redirect_to root_url
   end
 
   private

@@ -1,18 +1,20 @@
 class Referral < ActiveRecord::Base
-  scope :most_popular, -> { order('rank DESC') }
+
   default_scope -> { order('created_at DESC') }
   validates :company_id, presence: true
   validates :details, presence: true, length: { maximum: 140 }
-  validates :link, presence: true, url: true
+  
 
   belongs_to :company
   has_many :claims, dependent: :destroy
+  after_create :create_claim
+  after_create :add_http
 
   self.per_page = 10
 
   def update_rank
     age = (self.created_at - Time.new(1970,1,1)) / 86400
-    new_rank = self.claims.count + age
+    new_rank = (self.claims.count - 1) + age
 
     self.update_attribute(:rank, new_rank)
   end
@@ -28,6 +30,20 @@ class Referral < ActiveRecord::Base
       search(query)
     else
       all
+    end
+  end
+
+  private
+
+  def create_claim
+    self.claims.create
+  end
+
+  def add_http
+    unless self.link.start_with?('http') || self.link.start_with?('https')
+      orig_link = self.link
+      self.link = "http://#{orig_link}"
+      self.save!
     end
   end
 end
