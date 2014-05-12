@@ -22,22 +22,26 @@
 
   <div id="navbar">
     <ul id="navlist">
-      <li><%= link_to "Latest", root_path, class: 'latest-refcodes' %></li>
-      <li><%= link_to "Trending", root_path, class: 'trending-refcodes' %></li>
-      <li><%= link_to "Popular", root_path(most_popular: true), class: 'most-popular-refcodes' %></li>
+      <li><%= link_to "Trending", root_path, class: 'latest-refcodes' %>
+      <li><%= link_to "Latest", root_path(latest: true), class: 'latest-refcodes' %></li>
+      <li><%= link_to "All Time", root_path(all_time: true), class: 'trending-refcodes' %></li>
       <li><%= link_to "About" %></li>
     </ul>
+
     <div id="navsearch">
       <div id="search-icon">
-      <img src="/assets/search.svg">
+        <img src="/assets/search.svg">
       </div>
+
       <div id="search-field">
         <%= form_tag root_path, method: :get, class: "search", role: 'search' do %>
         <%= text_field_tag :query, params[:query], placeholder: "Type and hit enter to search" %>
         <!--<%= submit_tag "Search", name: nil %>-->
         <% end %>
       </div>
+
     </div>
+    
     <ul id="navlist-mobile">
       <li><%= link_to "Latest", root_path, class: 'latest-refcodes' %></li>
       <li><%= link_to "Trending", root_path, class: 'trending-refcodes' %></li>

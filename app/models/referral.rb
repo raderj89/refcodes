@@ -1,9 +1,15 @@
 class Referral < ActiveRecord::Base
 
-  default_scope -> { order('created_at DESC') }
   validates :company_id, presence: true
   validates :details, presence: true, length: { maximum: 140 }
+
+  default_scope -> { joins(:company).includes(:claims).order('rank DESC') }
   
+  scope :latest, -> { joins(:company).includes(:claims).order('created_at DESC') }
+
+  scope :all_time, -> { find_by_sql("SELECT referrals.*, COUNT(claims.id) AS num_claims FROM referrals
+                                      JOIN claims ON claims.referral_id = referrals.id
+                                     GROUP BY referrals.id ORDER BY num_claims DESC") }
 
   belongs_to :company
   has_many :claims, dependent: :destroy

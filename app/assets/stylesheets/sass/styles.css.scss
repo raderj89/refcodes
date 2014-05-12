@@ -30,6 +30,11 @@ ul {
   padding: 0;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
 *:focus {
   outline: 0;
 }
@@ -398,22 +403,21 @@ ul {
   height: 2.4em;
 }
 
-.claim-count {
-  display: none;
-  font: $primary-font;
-  font-size: 0.9em;
-  color: $dark-grey;
-  opacity: 0.5;
-  width: 12%;
-  float: left;
-  margin-top: 0.7em;
-  margin-left: 1.1em;
+// .claim-count {
+//   font: $secondary-font;
+//   font-size: 0.9em;
+//   color: $dark-grey;
+//   opacity: 0.5;
+//   width: 12%;
+//   float: left;
+//   margin-top: 0.7em;
+//   margin-left: 1.1em;
 
-  @media screen and (max-width: $width-small) {
-    width: auto;
-    margin-left: auto;
-    margin-top: 1.1em;
-  }
+//   @media screen and (max-width: $width-small) {
+//     width: auto;
+//     margin-left: auto;
+//     margin-top: 1.1em;
+//   }
 
-}
+// }
 
