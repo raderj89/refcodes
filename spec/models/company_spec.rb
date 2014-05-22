@@ -8,7 +8,14 @@ describe Company do
 
   it { should respond_to(:name) }
   it { should be_valid }
-  it { should respond_to(:referrals)}
+  it { should respond_to(:referrals) }
+
+  # Shoulda matchers
+  it { should have_many(:referrals) }
+  it { should validate_presence_of(:name) }
+
+  # Deprecated in Rails 4
+  # it { should allow_mass_assignment_of(:name) }
 
   describe "when name is not present" do
     before { @company.name = " " }

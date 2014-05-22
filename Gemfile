@@ -29,6 +29,7 @@ group :test do
   gem 'factory_girl_rails', '4.2.1'
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem 'growl', '1.0.3'
+  gem 'shoulda'
 end
 
 gem 'sass-rails', '4.0.1'

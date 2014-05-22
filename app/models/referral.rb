@@ -3,12 +3,13 @@ class Referral < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
   validates :company_id, presence: true
   validates :details, presence: true, length: { maximum: 140 }
-  
+  validates :link, presence: true, format: { with: URI.regexp }
 
   belongs_to :company
   has_many :claims, dependent: :destroy
+
+  before_validation :add_http
   after_create :create_claim
-  after_create :add_http
 
   self.per_page = 10
 
@@ -40,10 +41,9 @@ class Referral < ActiveRecord::Base
   end
 
   def add_http
-    unless self.link.start_with?('http') || self.link.start_with?('https')
+    unless self.link.start_with?('http') || self.link.start_with?('https') || self.link.empty?
       orig_link = self.link
       self.link = "http://#{orig_link}"
-      self.save!
     end
   end
 end

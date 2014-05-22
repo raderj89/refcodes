@@ -52,13 +52,13 @@ describe "Referral pages" do
       end
     end
 
-    describe "claim creation" do
-      before { visit root_path }
+    # describe "claim creation" do
+    #   before { visit root_path }
 
-      it "should increase claims count when clicked" do
-        expect { first('.buttons > a').click }.to change(Claim, :count).by(1)
-      end
-    end
+    #   it "should increase claims count when clicked" do
+    #     expect { first('.buttons > a').click }.to change(Claim, :count).by(1)
+    #   end
+    # end
 
     describe "delete links" do
       it { should_not have_link('delete')}
@@ -66,7 +66,9 @@ describe "Referral pages" do
       describe "as an admin" do
         let(:admin) { FactoryGirl.create(:admin) }
         before do
-          sign_in :admin
+          visit new_admin_session_path
+          fill_in "Email", with: admin.email
+          fill_in "Password", with: admin.password
           visit root_path
         end
 

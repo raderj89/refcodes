@@ -17,7 +17,7 @@ class ReferralsController < ApplicationController
     elsif params[:query]
       @referrals = Referral.text_search(params[:query]).joins(:company).includes(:claims).order('rank DESC').paginate(page: params[:page], per_page: 10)
     else
-      @referrals = Referral.find_by_sql("SELECT referrals.* FROM referrals ORDER BY rank DESC").paginate(page: params[:page], per_page: 10)
+      @referrals = Referral.find_by_sql("SELECT referrals.* FROM referrals ORDER BY rank DESC").paginate({page: params[:page], per_page: 10})
     end
     respond_to do |format|
       format.html
