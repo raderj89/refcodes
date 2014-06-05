@@ -15,7 +15,6 @@
 //= require bootstrap
 //= require limiter.js
 //= require jquery.inview.min.js
-//= require social-share-button
 //= require_tree .
 
   //google analytics
