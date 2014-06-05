@@ -207,9 +207,6 @@ GEM
       rubyzip (< 1.0.0)
       websocket (~> 1.0.4)
     slop (3.5.0)
-    social-share-button (0.1.6)
-      coffee-rails
-      sass-rails
     spork (1.0.0rc4)
     spork-rails (4.0.0)
       rails (>= 3.0.0, < 5)
@@ -273,7 +270,6 @@ DEPENDENCIES
   sass-rails (~> 4.0.0)
   sdoc (= 0.3.20)
   selenium-webdriver (= 2.35.1)
-  social-share-button
   spork-rails (= 4.0.0)
   turbolinks (= 1.1.1)
   uglifier (= 2.1.1)
