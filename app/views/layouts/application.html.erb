@@ -13,13 +13,8 @@
   <meta property="og:url" content="http://www.refcod.es" />
 </head>
 <body>
+  <div id="fb-root"></div>
+  <%= yield %>
 
-  <div class="container">
-    <%= render 'layouts/header' %>
-
-    <%= yield %>
-  </div>
-
-  <%= render 'layouts/footer' %>
 </body>
 </html>

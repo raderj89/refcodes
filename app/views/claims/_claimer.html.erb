@@ -1,1 +1,7 @@
-<%= link_to "Claim", referral_claim_path(referral), onclick: "var w = window.open(\"#{referral.link}\"); w.focus(); return false;", remote: true, class: 'claim-button' %>
+<%= link_to referral_claim_path(referral), onclick: "var w = window.open(\"#{referral.link}\"); w.focus(); return false;", remote: true do %>
+  <div class="claim-button"><%= image_tag('refcodes.svg') %>
+    <div class="btn-text">
+      Claim this
+    </div>
+  </div>
+<% end %>
