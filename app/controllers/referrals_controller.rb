@@ -11,7 +11,7 @@ class ReferralsController < ApplicationController
     if params[:latest]
       @referrals = Referral.latest.paginate(page: params[:page], per_page: 10)
     elsif params[:all_time]
-       @referrals = Referral.all_time.paginate(page: params[:page], per_page: 10)
+      @referrals = Referral.all_time.paginate(page: params[:page], per_page: 10)
     elsif params[:query]
       @referrals = Referral.text_search(params[:query]).paginate(page: params[:page], per_page: 10)
     else

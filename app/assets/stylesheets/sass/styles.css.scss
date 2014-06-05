@@ -130,7 +130,6 @@ a {
 
 #logo {
   background-color: $light-green;
-  padding: 11%;
 
   img {
     max-width: 100%;
@@ -359,8 +358,11 @@ a {
 }
 
 #referral-deals {
+  height: 800px;
+  overflow: scroll;
   padding-left: 6%;
   padding-right: 6%;
+
 
   @media screen and (max-width: $width-medium) {
     padding-left: 4%;

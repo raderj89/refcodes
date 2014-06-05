@@ -1,5 +1,1 @@
-$(".js-referral-<%= @referral.id %>-claims").html('<%= pluralize(@referral.claims.count, 'claim') %>');
-//var win = window.open("<%= @referral.link %>", '_blank');
-//win.focus();
-
-//window.open("<%= @referral.link %>", '_blank', "height=500,width=800");
+$(".ref-<%= @referral.id %>-claim-count").html('<%= pluralize(@referral.claims.count, 'claim') %>');

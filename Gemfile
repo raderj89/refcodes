@@ -2,12 +2,10 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 #ruby-gemset=refcodes
 
-gem 'rails', '4.0.2'
+gem 'rails', '4.1.1'
 gem 'pg', '0.15.1'
 gem 'bootstrap-sass'
-gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
-gem 'social-share-button'
 gem 'pg_search'
 gem 'devise'
 gem 'bitly'
@@ -29,9 +27,10 @@ group :test do
   gem 'factory_girl_rails', '4.2.1'
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem 'growl', '1.0.3'
+  gem 'faker', '1.1.2'
 end
 
-gem 'sass-rails', '4.0.1'
+gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.1'
 gem 'jquery-rails', '3.0.4'

@@ -16,35 +16,27 @@
     Limit: <%= referral.limit %>
     <br>
     <% end %>
-<!-- <div class="claim-count"> -->
+    <div class="ref-<%= referral.id %>-claim-count">
       <%= pluralize(referral.claims.count, 'claim') %> 
-<!-- </div> -->
+    </div>
   </div>
 
   <div class="button-group">
-
     <div class="three-buttons">
-      <!--<%= social_share_button_tag("#{referral.details} from #{referral.link} via @Refcodes") %>-->
-      <div class="fb-share-button" data-href="<%= referral.link %>" data-type="button">
+      <button class="fb-share-button" data-href="<%= referral.link %>">
         <%= image_tag('facebook.svg') %>
         <div class="btn-text">
           Share
         </div>
-      </div>
+      </button>
 
-      <div class="twitter-share-button" <a href="https://twitter.com/share" data-text='<%= "Get \"#{referral.details}\" from #{referral.link}" %>' data-via="refcodes" data-count="none"><%= image_tag('twitter.svg') %>
+      <button class="twitter-share-button"> <a href="https://twitter.com/intent/tweet?url=<%= referral.link %>&text=Get%20<%= referral.details %>%20from&via=Refcodes">
+        <%= image_tag('twitter.svg') %>
       <div class="btn-text">Share</div></a>
-      </div>
-      
-      <div class="claim-button"><%= image_tag('refcodes.svg') %>
+      </button>
 
-        <div class="btn-text">
-          <%= render partial: 'claims/claimer', locals: { referral: referral } %>
-        </div>
-      </div>
+      <%= render partial: 'claims/claimer', locals: { referral: referral } %>
       
     </div>
-    
   </div>
-
 </div>

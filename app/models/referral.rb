@@ -13,6 +13,7 @@ class Referral < ActiveRecord::Base
 
   belongs_to :company
   has_many :claims, dependent: :destroy
+  
   after_create :create_claim
   after_create :add_http
 
@@ -21,15 +22,14 @@ class Referral < ActiveRecord::Base
   def update_rank
     age = (self.created_at - Time.new(1970,1,1)) / 86400
     new_rank = (self.claims.count - 1) + age
-
-    self.update_attribute(:rank, new_rank)
+    self.update(rank: new_rank)
   end
 
   include PgSearch
 
   pg_search_scope :search, against: [:details],
-    using: {tsearch: {dictionary: "english"}},
-    associated_against: {company: :name}
+    using: { tsearch: { dictionary: "english" } },
+    associated_against: { company: :name }
 
   def self.text_search(query)
     if query.present?
