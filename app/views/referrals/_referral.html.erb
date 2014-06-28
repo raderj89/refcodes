@@ -30,9 +30,11 @@
         </div>
       </button>
 
-      <button class="twitter-share-button"> <a href="https://twitter.com/intent/tweet?url=<%= referral.link %>&text=Get%20<%= referral.details %>%20from&via=Refcodes">
-        <%= image_tag('twitter.svg') %>
-      <div class="btn-text">Share</div></a>
+      <button class="twitter-share-button">
+        <a href="https://twitter.com/intent/tweet?url=<%= referral.link %>&text=Get%20<%= referral.details %>%20via%20Refcodes">
+          <%= image_tag('twitter.svg') %>
+          <div class="btn-text">Share</div>
+        </a>
       </button>
 
       <%= render partial: 'claims/claimer', locals: { referral: referral } %>

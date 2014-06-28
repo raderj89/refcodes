@@ -48,7 +48,10 @@
 	padding: 1.2em 2em 1.2em 2em;
 	color: $light-grey;
 	font: $secondary-font;
-	font-size: 0.8em;
+	font-size: 0.7em;
+	@media screen and (min-width: $width-xlarge) {
+		font-size: 0.8em;
+	}
 }
  
 

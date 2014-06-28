@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
+//= require bootstrap.min.js
 //= require limiter.js
 //= require jquery.inview.min.js
 //= require_tree .

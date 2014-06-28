@@ -4,5 +4,7 @@ Refcodes::Application.routes.draw do
     get '/claim', to: 'claims#create', as: :claim
   end
   
+  get '/about', to: 'pages#about', as: :about
+
   root to: 'referrals#index'
 end

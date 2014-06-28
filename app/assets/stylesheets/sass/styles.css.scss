@@ -31,7 +31,7 @@ ul {
 }
 
 a {
-  color: white;
+  color: $light-grey;
   text-decoration: none;
 }
 
@@ -117,6 +117,7 @@ a {
   float: left;
   width: 22.5%;
   height: 100%;
+  position: relative;
 
   @media screen and (max-width: $width-medium) {
     width: 33%;
@@ -126,77 +127,113 @@ a {
     float: none;
     width: 100%;
   }
-}
 
-#logo {
-  background-color: $light-green;
+  #logo {
+    background-color: $light-green;
 
-  img {
-    max-width: 100%;
+    img {
+      max-width: 100%;
+    }
+
+    @media screen and (max-width: $width-small) {
+      padding-left: 2%;
+      padding-top: 10%;
+      padding-bottom: 10%;
+      padding: 12%;
+    }
   }
 
-  @media screen and (max-width: $width-small) {
-    /*padding-left: 2%;
-    padding-top: 10%;
-    padding-bottom: 10%;*/
-    padding: 12%;
+  #banner-left {
+    @include banner;
+
+    @media screen and (max-width: $width-small) {
+      display: none;
+    }
   }
-}
 
-#banner-left {
-  @include banner;
+  .js-ref-form {
+    @include menu;
 
-  @media screen and (max-width: $width-small) {
-    display: none;
+    @media screen and (max-width: $width-small) {
+      display: none;
+    }
   }
-}
 
-.js-ref-form {
-  @include menu;
-
-  @media screen and (max-width: $width-small) {
-    display: none;
-  }
-}
-
-.form-group {
-  width: 100%;
-  display: block;
-
-  fieldset {
-    margin: 0 0 1em 0;
-    border: none;
-    padding: 0;
+  .form-group {
     width: 100%;
+    display: block;
+
+    fieldset {
+      margin: 0 0 1em 0;
+      border: none;
+      padding: 0;
+      width: 100%;
+    }
+
+    label {
+      line-height: 2.2;
+    }
+
+    input[type="text"] {
+      border: none;
+      height: 3em;
+      padding-left: 3%;
+      width: 97%;
+    }
+
+    textarea {
+      border: none;
+      height: 7em;
+      padding-left: 3%;
+      padding-top: 3%;
+      width: 97%;
+    }
+
+    input[type="date"] {
+      border: none;
+      height: 3em;
+      padding-left: 3%;
+      width: 97%;
+    }
+
+    #notice {
+      .alert-success {
+        background-color: $light-green;
+        padding: 0.5em;
+        color: black;
+        button.close {
+          border: 0;
+          background: transparent;
+          font-weight: bold;
+          padding-bottom: 0px;
+        }
+      }
+    }
+    .alert-warning {
+      background: #f2dede;
+      padding: 0.5em;
+      color: black;
+      button.close {
+        border: 0;
+        background: transparent;
+        font-weight: bold;
+        float: right;
+      }
+      h4 {
+        margin-top: 10px;
+      }
+      ul {
+        padding-left: 25px
+      }
+    }
   }
 
-  label {
-    line-height: 2.2;
-  }
-
-  input[type="text"] {
-    border: none;
-    height: 3em;
-    padding-left: 3%;
-    width: 97%;
-  }
-
-  textarea {
-    border: none;
-    height: 7em;
-    padding-left: 3%;
-    padding-top: 3%;
-    width: 97%;
-  }
-
-  input[type="date"] {
-    border: none;
-    height: 3em;
-    padding-left: 3%;
-    width: 97%;
+  .sticky {
+    position: fixed;
+    width: 22.5%;
+    top: 0;
   }
 }
-
 
 /*=== Right Container Styles ===*/
 
@@ -283,10 +320,15 @@ a {
       padding-bottom: 1.8em;
       border-bottom: solid 3px $charcoal;
     }
-
+  
     a:active {
       color: $charcoal;
     }
+  }
+
+  li.active > a {
+    padding-bottom: 1.8em;
+    color: $charcoal;
   }
 }
 
@@ -358,8 +400,6 @@ a {
 }
 
 #referral-deals {
-  height: 800px;
-  overflow: scroll;
   padding-left: 6%;
   padding-right: 6%;
 
@@ -367,6 +407,7 @@ a {
   @media screen and (max-width: $width-medium) {
     padding-left: 4%;
     padding-right: 4%;
+    height: auto;
   }
 
 }
@@ -422,4 +463,17 @@ a {
 //   }
 
 // }
+
+// About Styles
+
+#about {
+  h4 {
+    font: $primary-font;
+  }
+
+  p {
+    font: $secondary-font;
+    margin: 0;
+  }
+}
 
