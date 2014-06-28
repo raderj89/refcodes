@@ -31,7 +31,7 @@ ul {
 }
 
 a {
-  color: $light-grey;
+  color: $white;
   text-decoration: none;
 }
 
@@ -474,6 +474,10 @@ a {
   p {
     font: $secondary-font;
     margin: 0;
+  }
+
+  a {
+    color: $light-grey;
   }
 }
 
