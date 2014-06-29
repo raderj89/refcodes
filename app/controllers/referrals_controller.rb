@@ -15,7 +15,7 @@ class ReferralsController < ApplicationController
     elsif params[:query]
       @referrals = Referral.text_search(params[:query]).paginate(page: params[:page], per_page: 10)
     else
-      @referrals = Referral.paginate(page: params[:page], per_page: 10)
+      @referrals = Referral.trending.paginate(page: params[:page], per_page: 10)
     end
 
     respond_to do |format|

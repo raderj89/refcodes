@@ -3,7 +3,7 @@ class Referral < ActiveRecord::Base
   validates :company_id, presence: true
   validates :details, presence: true, length: { maximum: 140 }
 
-  default_scope -> { joins(:company).includes(:claims).order('rank DESC') }
+  scope :trending, -> { joins(:company).includes(:claims).order('rank DESC') }
   
   scope :latest, -> { joins(:company).includes(:claims).order('created_at DESC') }
 

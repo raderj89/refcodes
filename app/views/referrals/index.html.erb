@@ -24,7 +24,7 @@
 
   <div id="navbar">
     <ul id="navlist">
-      <li><%= link_to "Trending", root_path, class: 'latest-refcodes' %>
+      <li><%= link_to "Trending", root_path(trending: true, class: 'latest-refcodes' %>
       <li><%= link_to "Latest", root_path(latest: true), class: 'latest-refcodes' %></li>
       <li><%= link_to "All Time", root_path(all_time: true), class: 'trending-refcodes' %></li>
       <li><%= link_to "About", about_path %></li>
@@ -45,8 +45,8 @@
     </div>
     
     <ul id="navlist-mobile">
-      <li><%= link_to "Latest", root_path, class: 'latest-refcodes' %></li>
-      <li><%= link_to "Trending", root_path, class: 'trending-refcodes' %></li>
+      <li><%= link_to "Trending", root_path(trending: true), class: 'trending-refcodes' %></li>
+      <li><%= link_to "Latest", root_path(latest: true), class: 'latest-refcodes' %></li>
       <li><%= link_to "Popular", root_path(most_popular: true), class: 'most-popular-refcodes' %></li>
       <li><%= link_to "About", about_path %></li>
     </ul>
