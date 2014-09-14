@@ -1,0 +1,41 @@
+.form-group
+  = form_for @referral do |f|
+    
+    #notice
+      = render 'shared/flash', flash: flash
+    
+    = render 'shared/error_messages'
+    
+    %fieldset
+      = f.fields_for :company do |company|
+        = company.label :name, "Company Name"
+        = company.text_field :name
+
+    %fieldset
+      = f.label :details, "Discount Details"
+      
+      %span.detail-counter
+      
+      = f.text_area :details, placeholder: "e.g. $25 off your first purchase"
+
+    %fieldset
+      = f.label :link, "Link"    
+      = f.text_field :link
+
+    %fieldset
+      = f.label :code, "Referral code"
+      = f.text_field :code
+
+
+    %fieldset
+      = f.label :expiration, "Expiration Date"
+      = f.date_field :expiration
+
+
+    %fieldset
+      = f.label :limit, "Referral Limit"
+      = f.text_field :limit  
+
+
+    %fieldset
+      = f.submit "Submit", class: 'post-button'
