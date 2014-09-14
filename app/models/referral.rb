@@ -41,6 +41,22 @@ class Referral < ActiveRecord::Base
     self.update(rank: new_rank)
   end
 
+  def empty_code?
+    code.empty?
+  end
+
+  def company_name
+    company.name
+  end
+
+  def nil_code?
+    code.nil?
+  end
+
+  def claim_count
+    claims.count
+  end
+
   private
 
   def create_claim

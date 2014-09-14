@@ -1,5 +1,5 @@
 .referral{ data: { referral_id: referral.id } }
-  %h2= referral.company.name
+  %h2= referral.company_name
   %h3.referral-details= referral.details
   
   .details
@@ -7,7 +7,7 @@
     = link_to referral.link, "#{referral.link}"
     %br
 
-    - unless referral.code.nil? || referral.code.empty?
+    - unless referral.nil_code? || referral.empty_code?
       Code:
       = referral.code
       %br
@@ -23,7 +23,7 @@
       %br
 
     %div{ class: "ref-#{referral.id}-claim-count" }
-      = pluralize(referral.claims.count, 'claim')
+      = pluralize(referral.claim_count, 'claim')
 
   .button-group
     .three-buttons

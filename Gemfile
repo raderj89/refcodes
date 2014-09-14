@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.1.2'
-gem 'pg', '0.15.1'
+gem 'pg'
+
 gem 'will_paginate'
 gem 'pg_search'
 gem 'devise'

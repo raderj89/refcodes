@@ -1,6 +1,5 @@
 class ReferralsController < ApplicationController
   respond_to :html, :js
-  require 'will_paginate/array'
 
   before_action :set_referral, only: [:edit, :update, :destroy]
   before_action(only: [:index, :create]) { |c| c.send(:apply_scope, params) }
