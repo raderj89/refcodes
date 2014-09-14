@@ -1,4 +1,4 @@
-var partial = '<%= escape_javascript( render partial: "referral", collection: @referrals ) %>';
+var partial = '<%= escape_javascript(render @referrals) %>';
 var path = '<%="#{root_path page: @referrals.next_page }" %>';
 
 $('a.load-more-referrals').before(partial);

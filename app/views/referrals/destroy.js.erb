@@ -1,0 +1,3 @@
+<% if @referral.destroyed? %>
+  $(".referral[data-referral-id=" + <%= @referral.id %> + "]").remove();
+<% end %>

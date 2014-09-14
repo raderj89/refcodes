@@ -1,9 +1,9 @@
 <% if @referral.valid? %>
-  $("#referral-deals").prepend("<%= escape_javascript(render(@referral)) %>");
-  $(".js-ref-form").html("<%= escape_javascript(render partial: 'form', locals: { referral: @new_referral, company: @new_company }) %>");
+  $("#referral-deals").prepend("<%= escape_javascript(render @referral ) %>");
+  $(".js-ref-form").html("<%= escape_javascript(render 'form', referral: @new_referral) %>");
 <% else %>
-  $(".js-ref-form").html("<%= escape_javascript(render partial: 'form', locals: { referral: @referral, company: @company }) %>");
+  $(".js-ref-form").html("<%= escape_javascript(render 'form', referral: @referral) %>");
 <% end %>
 
 $(".ref-<%= @referral.id %>-claim-count").html('<%= pluralize(@referral.claims.count, 'claim') %>');
-$("#notice").html("<%= escape_javascript(render partial: 'shared/flash' , locals: { flash: flash }).html_safe %>");
+$("#notice").html("<%= escape_javascript(render 'shared/flash' , flash: flash).html_safe %>");

@@ -3,7 +3,7 @@ class Claim < ActiveRecord::Base
 
   validates :referral_id, presence: true
 
-  after_save :update_referral
+  after_create :update_referral
 
   private
 

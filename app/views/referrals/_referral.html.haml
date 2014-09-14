@@ -1,0 +1,44 @@
+.referral{ data: { referral_id: referral.id } }
+  %h2= referral.company.name
+  %h3.referral-details= referral.details
+  
+  .details
+    Link:
+    = link_to referral.link, "#{referral.link}"
+    %br
+
+    - unless referral.code.nil? || referral.code.empty?
+      Code:
+      = referral.code
+      %br
+    
+    - unless referral.expiration.nil?
+      Expires:
+      = referral.expiration
+      %br
+
+    - unless referral.limit.nil?
+      Limit:
+      = referral.limit
+      %br
+
+    %div{ class: "ref-#{referral.id}-claim-count" }
+      = pluralize(referral.claims.count, 'claim')
+
+  .button-group
+    .three-buttons
+      %button.fb-share-button{ data: { href: referral.link } }
+        = image_tag('facebook.svg')
+        .btn-text
+          Share
+
+      %button.twitter-share-button
+        %a{ href: "https://twitter.com/intent/tweet?url=#{referral.link}&text=#{referral.details}%20via%20Refcodes" }
+          = image_tag('twitter.svg')
+          .btn-text
+            Share
+
+      = render 'claims/claimer', referral: referral
+
+  - if admin_signed_in?
+    = render 'admin_controls', referral: referral

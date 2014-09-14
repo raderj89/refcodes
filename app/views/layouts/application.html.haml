@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %title
+      = full_title(yield(:title))
+    
+    = stylesheet_link_tag    "application", media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    
+    = tag :meta, name: "viewport", content: "width=device-width, initial-scale=1.0"
+    = tag :meta, name: "description", content: "Refcodes saves you money on the most popular online courses, tech products and services."
+    = tag :meta, http_equiv: "Content-Type", content: "text/html; charset=UTF-8"
+    = tag :meta, property: "og:title", content: "Refcodes"
+    = tag :meta, property: "og:type", content: "website"
+    = tag :meta, property: "og:url", content: "http://www.refcod.es"
+
+  %body
+    #fb-root
+    
+    = yield

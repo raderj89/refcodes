@@ -2,8 +2,8 @@
 /*=== Import Files ===*/
 
 @import 'normalize';
-@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
-@import url(http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic);
+@import url("http://fonts.googleapis.com/css?family=Montserrat:400,700");
+@import url("http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic");
 @import 'variables';
 @import 'mixins';
 
@@ -403,6 +403,9 @@ a {
   padding-left: 6%;
   padding-right: 6%;
 
+  p {
+    font: $secondary-font;
+  }
 
   @media screen and (max-width: $width-medium) {
     padding-left: 4%;
@@ -439,6 +442,14 @@ a {
   line-height: 1.7em;
   color: $dark-grey;
   opacity: 0.5;
+
+  a {
+    color: $dark-grey;
+    
+    &:hover {
+      color: black;
+    }
+  }
 }
 
 .button-group {
@@ -446,25 +457,15 @@ a {
   height: 2.4em;
 }
 
-// .claim-count {
-//   font: $secondary-font;
-//   font-size: 0.9em;
-//   color: $dark-grey;
-//   opacity: 0.5;
-//   width: 12%;
-//   float: left;
-//   margin-top: 0.7em;
-//   margin-left: 1.1em;
+.admin-controls {
+  a {
+    color: $dark-grey;
 
-//   @media screen and (max-width: $width-small) {
-//     width: auto;
-//     margin-left: auto;
-//     margin-top: 1.1em;
-//   }
-
-// }
-
-// About Styles
+    &:hover {
+      color: black;
+    }
+  }
+}
 
 #about {
   h4 {
