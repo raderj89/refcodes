@@ -1,0 +1,11 @@
+#referral-deals
+  #notice
+    = render 'shared/flash', flash: flash
+  
+  - if @referrals.any?
+    = render @referrals
+    = link_to 'Load More Referrals', params.merge(page: @referrals.next_page), class: 'load-more-referrals',
+      remote: true if @referrals.next_page
+  - else
+    %p
+      We couldn't find any referrals from your search query.

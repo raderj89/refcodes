@@ -1,0 +1,13 @@
+- if referral.errors.any?
+  #error-explanation
+    .alert.alert-block.alert-warning
+      %button.close
+        &times;
+
+      %h4
+        The form contains
+        = pluralize(referral.errors.count, "error")
+      
+      %ul
+        - referral.errors.full_messages.each do |msg|
+          %li= msg

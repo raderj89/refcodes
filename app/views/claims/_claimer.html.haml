@@ -1,0 +1,5 @@
+= link_to referral_claim_path(referral_id: referral.id), onclick: "var w = window.open(\"#{referral.link}\"); w.focus(); return false;", remote: true, class: 'claim-ref' do
+  .claim-button
+    = image_tag('refcodes.svg')
+    .btn-text
+      Claim this
