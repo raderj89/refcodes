@@ -9,6 +9,7 @@ gem 'devise'
 gem 'bitly'
 gem 'figaro'
 gem 'haml'
+gem 'friendly_id'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.14.1'

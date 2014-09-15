@@ -22,6 +22,10 @@ class Referral < ActiveRecord::Base
   # Pagination
   self.per_page = 10
 
+  # Friendly ID
+  extend FriendlyId
+  friendly_id :details, use: [:slugged, :finders]
+
   # PG Search
   pg_search_scope :search, against: [:details],
     using: { tsearch: { dictionary: "english" } },

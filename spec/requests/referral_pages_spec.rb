@@ -1,28 +1,28 @@
 require 'spec_helper'
 
 describe "Referral pages" do
+  let!(:company) { FactoryGirl.create(:company) }
   
+  let!(:r1) do
+    FactoryGirl.create(:referral,
+      company: company,
+      details: "Lorem ipsum",
+      link: "http://example.com")
+  end
+  
+  let!(:r2) do
+    FactoryGirl.create(:referral,
+      company: company,
+      details: "Lorem ipsum et",
+      link: "http://example2.com")
+  end
+
+  let!(:c1) { FactoryGirl.create(:claim, referral: r1) }
+  let!(:c2) { FactoryGirl.create(:claim, referral: r2) }
+
   subject { page }
 
-  describe "referrals page" do
-    let!(:company) { FactoryGirl.create(:company) }
-    
-    let!(:r1) do
-      FactoryGirl.create(:referral,
-        company: company,
-        details: "Lorem ipsum",
-        link: "http://example.com")
-    end
-    
-    let!(:r2) do
-      FactoryGirl.create(:referral,
-        company: company,
-        details: "Lorem ipsum et",
-        link: "http://example2.com")
-    end
-
-    let!(:c1) { FactoryGirl.create(:claim, referral: r1) }
-    let!(:c2) { FactoryGirl.create(:claim, referral: r2) }
+  describe "referrals index page" do
     
     before { visit root_path }
 
@@ -95,5 +95,11 @@ describe "Referral pages" do
         it { should have_link('Edit', href: edit_referral_path(r2)) }
       end
     end
+  end
+
+  describe "referral show page" do
+    before { visit referral_path(r1) }
+
+    it { should have_content(r1.company.name) }
   end
 end

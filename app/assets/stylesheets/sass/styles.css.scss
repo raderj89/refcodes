@@ -99,6 +99,22 @@ a {
   }
 }
 
+.see-more-button {
+  @include social-btn($dark-green, $white);
+
+  &:hover {
+    background: $dark-green-hover;
+    border: solid 1px $green-border;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: $width-small) {
+    height: 3em;
+    margin-right: 2%;
+    padding: 0.6em;
+  }
+}
+
 .btn-text {
   float: left;
   padding-top: 0.2em;
@@ -196,19 +212,6 @@ a {
       width: 97%;
     }
 
-    #notice {
-      .alert-success {
-        background-color: $light-green;
-        padding: 0.5em;
-        color: black;
-        button.close {
-          border: 0;
-          background: transparent;
-          font-weight: bold;
-          padding-bottom: 0px;
-        }
-      }
-    }
     .alert-warning {
       background: #f2dede;
       padding: 0.5em;
@@ -262,6 +265,21 @@ a {
 
   @media screen and (max-width: $width-small) {
     line-height: 1.5em;
+  }
+}
+
+#notice {
+  .alert-success {
+    padding-top: 1em;
+    background-color: $light-green;
+    padding: 0.5em;
+    color: black;
+    button.close {
+      border: 0;
+      background: transparent;
+      font-weight: bold;
+      padding-bottom: 0px;
+    }
   }
 }
 
@@ -468,6 +486,9 @@ a {
 }
 
 #about {
+  padding-left: 6%;
+  padding-right: 6%;
+
   h4 {
     font: $primary-font;
   }
@@ -479,6 +500,10 @@ a {
 
   a {
     color: $light-grey;
+
+    &:hover {
+      color: $dark-grey;
+    }
   }
 }
 
