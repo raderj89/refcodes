@@ -1,0 +1,20 @@
+#navbar
+  %ul#navlist
+    %li= link_to "Trending", root_path(trending: true), class: 'latest-refcodes'
+    %li= link_to "Latest", root_path(latest: true), class: 'latest-refcodes'
+    %li= link_to "All Time", root_path(all_time: true), class: 'trending-refcodes'
+    %li= link_to "About", about_path
+
+  #navsearch
+    #search-icon
+      = image_tag('search.svg')
+
+    #search-field
+      = form_tag root_path, method: :get, class: "search", role: 'search' do
+        = text_field_tag :query, params[:query], placeholder: "Type and hit enter to search"
+
+  %ul#navlist-mobile
+    %li= link_to "Trending", root_path(trending: true), class: 'trending-refcodes'
+    %li= link_to "Latest", root_path(latest: true), class: 'latest-refcodes'
+    %li= link_to "Popular", root_path(most_popular: true), class: 'most-popular-refcodes'
+    %li= link_to "About", about_path

@@ -3,7 +3,7 @@ namespace :db do
 
     company_list = ["Bloc", "Team Treehouse", "One Month Rails", "Thinkful", "Skillshare", "Dropbox", "Uber"]
 
-    25.times do
+    10.times do
       company = Company.create!(name: company_list.sample)
       company.referrals.create!(
                       details: "$100 off a really sweet deal!",

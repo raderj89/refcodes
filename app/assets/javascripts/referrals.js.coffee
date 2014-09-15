@@ -1,12 +1,19 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
 $ ->
   $('a.load-more-referrals').on 'inview', (e, visible) ->
     return unless visible
     
     $.getScript $(this).attr('href')
+
+
+  $(document).click '#error-explanation > button.close', ->
+    $('#error-explanation').remove()
+
+  $(document).click '#new_referral #notice', ->
+    $('#notice').remove()
+
+  elem = $(".detail-counter")
+
+  $("#referral_details").limiter 140, elem
 
   window.fbAsyncInit = ->
     FB.init
