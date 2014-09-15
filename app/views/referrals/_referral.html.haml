@@ -39,13 +39,10 @@
             Share
 
       = render 'claims/claimer', referral: referral
-
-<<<<<<< HEAD
+      
       - unless params[:action] == "show"
         %button.see-more-button
           = link_to "See More", referral
 
-=======
->>>>>>> master
   - if admin_signed_in?
     = render 'admin_controls', referral: referral

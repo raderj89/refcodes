@@ -1,20 +1,20 @@
 class ReferralsController < ApplicationController
   respond_to :html, :js
+  require 'will_paginate/array'
 
-  before_action :set_referral, only: [:edit, :update, :destroy]
+  before_action :set_referral, only: [:show, :edit, :update, :destroy]
   before_action(only: [:index, :create]) { |c| c.send(:apply_scope, params) }
   before_action :authenticate_admin!, only: [:edit, :update, :destroy]
 
   def index
-    @referral = Referral.new
-    @referral.build_company 
+    @new_referral = Referral.new
+    @new_referral.build_company 
 
     respond_with(@referrals)
   end
 
   def create
     @new_referral = Referral.new(referral_params)
-    @referral = Referral.new(referral_params)
 
     if @new_referral.save
       flash[:success] = "Referral submitted!"
@@ -26,20 +26,17 @@ class ReferralsController < ApplicationController
 
   def show
     @new_referral = Referral.new
-    @new_referral.build_company
-
-    respond_with(@referral) do |f|
-      f.html { render :index }
-      f.js
-    end
+    @new_referral.build_company 
   end
 
   def edit
+    @new_referral = Referral.new
+    @new_referral.build_company 
   end
 
   def update
     if @referral.update(referral_params)
-      redirect_to root_path
+      redirect_to @referral
     end
   end
 

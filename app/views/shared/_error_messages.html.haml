@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 - if referral.errors.any?
-=======
-- if @referral.errors.any?
->>>>>>> master
   #error-explanation
     .alert.alert-block.alert-warning
       %button.close
@@ -10,15 +6,8 @@
 
       %h4
         The form contains
-<<<<<<< HEAD
         = pluralize(referral.errors.count, "error")
       
       %ul
         - referral.errors.full_messages.each do |msg|
-=======
-        = pluralize(@referral.errors.count, "error")
-      
-      %ul
-        - @referral.errors.full_messages.each do |msg|
->>>>>>> master
           %li= msg

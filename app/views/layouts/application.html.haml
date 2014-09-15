@@ -17,7 +17,6 @@
 
   %body
     #fb-root
-<<<<<<< HEAD
 
     #container-left
       #logo= link_to image_tag('logo.svg'), root_path
@@ -28,7 +27,7 @@
 
         - unless params[:controller] == "devise/sessions"
           .js-ref-form
-            = render 'form', referral: @new_referral
+            = render 'referrals/form', referral: @new_referral
 
     #container-right
       #banner-right
@@ -37,7 +36,3 @@
       = render 'shared/nav'
 
       = yield
-=======
-    
-    = yield
->>>>>>> master

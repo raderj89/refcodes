@@ -486,6 +486,9 @@ a {
 }
 
 #about {
+  padding-left: 6%;
+  padding-right: 6%;
+
   h4 {
     font: $primary-font;
   }
@@ -497,6 +500,10 @@ a {
 
   a {
     color: $light-grey;
+
+    &:hover {
+      color: $dark-grey;
+    }
   }
 }
 
