@@ -32,8 +32,8 @@
         .btn-text
           Share
 
-      %button.twitter-share-button
-        %a{ href: "https://twitter.com/intent/tweet?url=#{referral.link}&text=#{referral.details}%20via%20Refcodes" }
+      = link_to "https://twitter.com/intent/tweet?url=#{referral.link}&text=#{referral.details}%20via%20@Refcodes" do
+        %button.twitter-share-button
           = image_tag('twitter.svg')
           .btn-text
             Share
