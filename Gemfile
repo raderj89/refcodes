@@ -10,6 +10,7 @@ gem 'bitly'
 gem 'figaro'
 gem 'haml'
 gem 'friendly_id'
+gem 'rollbar', '~> 1.5.1'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.14.1'
