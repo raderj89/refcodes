@@ -1,7 +1,9 @@
 .form-group
-  = form_for referral do |f|  
+  = form_for referral do |f|
     = render 'shared/error_messages', referral: referral
-    
+
+    = text_field_tag :robot, nil, style: 'display: none'
+
     %fieldset
       = f.fields_for :company do |company|
         = company.label :name, "Company Name"
@@ -9,13 +11,13 @@
 
     %fieldset
       = f.label :details, "Discount Details"
-      
+
       %span.detail-counter
-      
+
       = f.text_area :details, placeholder: "e.g. $25 off your first purchase"
 
     %fieldset
-      = f.label :link, "Link"    
+      = f.label :link, "Link"
       = f.text_field :link
 
     %fieldset
@@ -27,10 +29,9 @@
       = f.label :expiration, "Expiration Date"
       = f.date_field :expiration
 
-
     %fieldset
       = f.label :limit, "Referral Limit"
-      = f.text_field :limit  
+      = f.text_field :limit
 
 
     %fieldset

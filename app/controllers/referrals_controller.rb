@@ -3,12 +3,13 @@ class ReferralsController < ApplicationController
   require 'will_paginate/array'
 
   before_action :set_referral, only: [:show, :edit, :update, :destroy]
+  before_action :check_for_robots, only: [:create]
   before_action(only: [:index, :create]) { |c| c.send(:apply_scope, params) }
   before_action :authenticate_admin!, only: [:edit, :update, :destroy]
 
   def index
     @new_referral = Referral.new
-    @new_referral.build_company 
+    @new_referral.build_company
 
     respond_with(@referrals)
   end
@@ -26,12 +27,12 @@ class ReferralsController < ApplicationController
 
   def show
     @new_referral = Referral.new
-    @new_referral.build_company 
+    @new_referral.build_company
   end
 
   def edit
     @new_referral = Referral.new
-    @new_referral.build_company 
+    @new_referral.build_company
   end
 
   def update
@@ -43,7 +44,7 @@ class ReferralsController < ApplicationController
   def destroy
     @referral.destroy
     flash.now[:warning] = "Referral obliterated."
-    
+
     respond_with(@referral)
   end
 
@@ -54,6 +55,12 @@ class ReferralsController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       flash[:error] = "Could not find that referral."
       redirect_to root_path
+    end
+
+    def check_for_robots
+      if !params[:robot].empty?
+        raise "Robot attack!"
+      end
     end
 
     def referral_params
