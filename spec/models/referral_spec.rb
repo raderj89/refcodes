@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Referral do
   let(:company) { FactoryGirl.create(:company) }
