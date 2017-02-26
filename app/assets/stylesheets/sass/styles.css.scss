@@ -126,7 +126,6 @@ a {
   }
 }
 
-
 /*=== Left Container Styles===*/
 
 #container-left {
@@ -347,8 +346,9 @@ a {
   }
 
   li.active > a {
-    padding-bottom: 1.8em;
+    border-bottom: solid 3px $charcoal;
     color: $charcoal;
+    padding-bottom: 1.8em;
   }
 }
 
