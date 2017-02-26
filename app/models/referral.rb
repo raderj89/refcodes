@@ -29,7 +29,6 @@ class Referral < ApplicationRecord
   validates :link, presence: true, url: true
 
   belongs_to :company, inverse_of: :referrals
-  has_many :claims
 
   accepts_nested_attributes_for :company
 
