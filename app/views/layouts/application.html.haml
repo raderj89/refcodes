@@ -3,11 +3,11 @@
   %head
     %title
       = full_title(yield(:title))
-    
+
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
-    
+
     = tag :meta, name: "viewport", content: "width=device-width, initial-scale=1.0"
     = tag :meta, name: "description", content: "Refcodes saves you money on the most popular online courses, tech products and services."
     = tag :meta, http_equiv: "Content-Type", content: "text/html; charset=UTF-8"
@@ -20,7 +20,7 @@
 
     #container-left
       #logo= link_to image_tag('logo.svg'), root_path
-      
+
       .ref-form
         #banner-left
           %p Add a referral to the list
@@ -34,5 +34,8 @@
         %p referral discounts for great tech products and services
 
       = render 'shared/nav'
+
+      #notice
+        = render 'shared/flash', flash: flash
 
       = yield

@@ -1,4 +1,27 @@
-class Referral < ActiveRecord::Base
+# == Schema Information
+#
+# Table name: referrals
+#
+#  id          :integer          not null, primary key
+#  details     :string(255)
+#  link        :string(255)
+#  code        :string(255)
+#  expiration  :date
+#  limit       :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  company_id  :integer
+#  rank        :float
+#  slug        :string(255)
+#  claim_count :integer          default("0"), not null
+#
+# Indexes
+#
+#  index_referrals_on_company_id  (company_id)
+#  index_referrals_on_slug        (slug) UNIQUE
+#
+
+class Referral < ApplicationRecord
   include PgSearch
 
   validates :company, presence: true
@@ -6,25 +29,22 @@ class Referral < ActiveRecord::Base
   validates :link, presence: true, url: true
 
   belongs_to :company, inverse_of: :referrals
-  has_many :claims, dependent: :destroy
-  
+  has_many :claims
+
   accepts_nested_attributes_for :company
 
   before_validation :add_http_if_none
-  after_create :create_claim
 
-  scope :trending, -> { joins(:company).includes(:claims).order('rank DESC') }
-  scope :latest, -> { joins(:company).includes(:claims).order('created_at DESC') }
-  scope :all_time, -> { find_by_sql("SELECT referrals.*, COUNT(claims.id) AS num_claims FROM referrals
-                                      JOIN claims ON claims.referral_id = referrals.id
-                                     GROUP BY referrals.id ORDER BY num_claims DESC") }
+  scope :trending, -> { joins(:company).order(rank: :desc) }
+  scope :latest, -> { joins(:company).order(created_at: :desc) }
+  scope :all_time, -> { order(claim_count: :desc) }
 
   # Pagination
   self.per_page = 10
 
   # Friendly ID
   extend FriendlyId
-  friendly_id :details, use: [:slugged, :finders]
+  friendly_id :company_and_details, use: [:slugged, :finders]
 
   # PG Search
   pg_search_scope :search, against: [:details],
@@ -39,10 +59,14 @@ class Referral < ActiveRecord::Base
     end
   end
 
+  def increment_claim_count
+    self.claim_count += 1
+    save if update_rank
+  end
+
   def update_rank
-    age = (self.created_at - Time.new(1970,1,1)) / 86400
-    new_rank = (self.claims.count - 1) + age
-    self.update(rank: new_rank)
+    age = (created_at - Time.new(1970,1,1)) / 86400
+    self.rank = (claim_count - 1) + age
   end
 
   def empty_code?
@@ -57,14 +81,10 @@ class Referral < ActiveRecord::Base
     code.nil?
   end
 
-  def claim_count
-    claims.count
-  end
-
   private
 
-  def create_claim
-    self.claims.create
+  def company_and_details
+    "#{company.name} #{details}"
   end
 
   def add_http_if_none

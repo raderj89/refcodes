@@ -1,15 +1,36 @@
+# == Schema Information
+#
+# Table name: referrals
+#
+#  id          :integer          not null, primary key
+#  details     :string(255)
+#  link        :string(255)
+#  code        :string(255)
+#  expiration  :date
+#  limit       :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  company_id  :integer
+#  rank        :float
+#  slug        :string(255)
+#  claim_count :integer          default("0"), not null
+#
+# Indexes
+#
+#  index_referrals_on_company_id  (company_id)
+#  index_referrals_on_slug        (slug) UNIQUE
+#
+
 require 'rails_helper'
 
 describe Referral do
   let(:company) { FactoryGirl.create(:company) }
-  let(:referral) { FactoryGirl.create(:referral) }
 
-  subject { referral }
+  subject(:referral) { FactoryGirl.create(:referral) }
 
   it { should respond_to(:details) }
   it { should respond_to(:link) }
   it { should respond_to(:company_id) }
-  it { should respond_to(:claims) }
   it { should be_valid }
 
   describe "when details are not present" do
@@ -44,26 +65,27 @@ describe Referral do
     it { should_not be_valid }
   end
 
-  describe "claim associations" do
-    let!(:first_claim) do
-      FactoryGirl.create(:claim, referral: referral)
+  describe '#increment_claim_count' do
+    it 'increments the claim count by 1' do
+      expect(referral.claim_count).to eq 0
+
+      referral.increment_claim_count
+
+      expect(referral.claim_count).to eq 1
     end
 
-    let!(:second_claim) do
-      FactoryGirl.create(:claim, referral: referral)
+    it 'updates the rank' do
+      expect(referral.rank).to be nil
+
+      referral.increment_claim_count
+
+      expect(referral.rank).to eq expected_rank(referral)
     end
+  end
 
-    it "should destroy associated claims" do
-      claims = referral.claims.to_a
-
-      referral.destroy
-
-      expect(claims).not_to be_empty
-
-      claims.each do |claim|
-        expect(Claim.where(id: claim.id)).to be_empty
-      end
-    end
+  def expected_rank(referral)
+    age = (referral.created_at - Time.new(1970,1,1)) / 86400
+    (referral.claim_count - 1) + age
   end
 
   describe "when associated company is deleted" do

@@ -10,10 +10,6 @@ FactoryGirl.define do
     link    "http://example.com"
   end
 
-  factory :claim do
-    referral
-  end
-
   factory :admin do
     email "admin@example.com"
     password "helloworld"

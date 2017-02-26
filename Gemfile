@@ -11,12 +11,21 @@ gem 'figaro'
 gem 'haml'
 gem 'friendly_id'
 gem 'rollbar'
+gem 'annotate'
+gem 'spring'
+gem 'puma'
+
+gem 'sass-rails'
+gem 'uglifier'
+gem 'jquery-rails'
+gem 'coffee-rails'
 
 group :development do
-  # gem 'web-console', '~> 2.0'
+  gem 'web-console'
 end
 
 group :development, :test do
+  gem 'rspec-rails'
   gem 'pry-rails'
 end
 
@@ -25,12 +34,4 @@ group :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   # gem 'database_cleaner', github: 'bmabey/database_cleaner'
-end
-
-gem 'sass-rails'
-gem 'uglifier'
-gem 'jquery-rails'
-
-group :production do
-  gem 'rails_12factor'
 end

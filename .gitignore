@@ -22,8 +22,7 @@ doc/
 .DS_Store
 .idea
 .secret
-/config/database.yml
-database.yml
+config/database.yml
 # Ignore application configuration
 /config/application.yml
 # Ignore application configuration
