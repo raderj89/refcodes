@@ -1,17 +1,17 @@
 class ReferralsController < ApplicationController
-  respond_to :html, :js
   require 'will_paginate/array'
 
-  before_action :set_referral, only: [:show, :edit, :update, :destroy]
+  before_action :build_referral, only: [:index, :show, :edit]
+  before_action :load_referral, only: [:show, :edit, :update, :destroy]
   before_action :check_for_robots, only: [:create]
   before_action(only: [:index, :create]) { |c| c.send(:apply_scope, params) }
   before_action :authenticate_admin!, only: [:edit, :update, :destroy]
 
   def index
-    @new_referral = Referral.new
-    @new_referral.build_company
-
-    respond_with(@referrals)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
@@ -26,13 +26,9 @@ class ReferralsController < ApplicationController
   end
 
   def show
-    @new_referral = Referral.new
-    @new_referral.build_company
   end
 
   def edit
-    @new_referral = Referral.new
-    @new_referral.build_company
   end
 
   def update
@@ -45,12 +41,15 @@ class ReferralsController < ApplicationController
     @referral.destroy
     flash.now[:warning] = "Referral obliterated."
 
-    respond_with(@referral)
+    respond_to do |format|
+      format.js
+      format.html { redirect_to root_path }
+    end
   end
 
   private
 
-    def set_referral
+    def load_referral
       @referral = Referral.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       flash[:error] = "Could not find that referral."
@@ -64,7 +63,9 @@ class ReferralsController < ApplicationController
     end
 
     def referral_params
-      params.require(:referral).permit(:details, :link, :expiration, :code, :limit, company_attributes: [:name])
+      params.require(:referral).permit(
+        :details, :link, :expiration, :code, :limit, company_attributes: [:name]
+      )
     end
 
     def apply_scope(params)

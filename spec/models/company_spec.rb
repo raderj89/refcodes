@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: companies
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require 'rails_helper'
 
 describe Company do
@@ -23,18 +33,14 @@ describe Company do
     let!(:older_referral) do
       FactoryGirl.create(:referral, company: company, created_at: 1.day.ago)
     end
-    
+
     let!(:newer_referral) do
       FactoryGirl.create(:referral, company: company, created_at: 1.hour.ago)
     end
 
-    it "should have the right referrals in the right order" do
-      expect(company.referrals.to_a).to eq [newer_referral, older_referral]
-    end
-
     it "should destroy associated referrals" do
       referrals = company.referrals.to_a
-  
+
       company.destroy
       expect(referrals).not_to be_empty
       referrals.each do |referral|

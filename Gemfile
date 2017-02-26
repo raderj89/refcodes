@@ -11,12 +11,15 @@ gem 'figaro'
 gem 'haml'
 gem 'friendly_id'
 gem 'rollbar'
+gem 'annotate'
+gem 'spring'
 
 group :development do
-  # gem 'web-console', '~> 2.0'
+  gem 'web-console'
 end
 
 group :development, :test do
+  gem 'rspec-rails'
   gem 'pry-rails'
 end
 
@@ -30,6 +33,7 @@ end
 gem 'sass-rails'
 gem 'uglifier'
 gem 'jquery-rails'
+gem 'coffee-rails'
 
 group :production do
   gem 'rails_12factor'

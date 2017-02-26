@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
+  before_action :build_referral, only: [:about]
+
   def about
-    @new_referral = Referral.new
-    @new_referral.build_company
   end
 end

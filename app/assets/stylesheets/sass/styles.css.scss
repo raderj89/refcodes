@@ -249,7 +249,7 @@ a {
 
   @media screen and (max-width: $width-small) {
     margin-left: 0;
-  }  
+  }
 }
 
 #banner-right {
@@ -269,6 +269,8 @@ a {
 }
 
 #notice {
+  font: $secondary-font;
+
   .alert-success {
     padding-top: 1em;
     background-color: $light-green;
@@ -299,7 +301,7 @@ a {
     height: 8em;
     /*height: 2em;*/
     /*text-align: center;*/
-  } 
+  }
 }
 
 #navlist {
@@ -338,7 +340,7 @@ a {
       padding-bottom: 1.8em;
       border-bottom: solid 3px $charcoal;
     }
-  
+
     a:active {
       color: $charcoal;
     }
@@ -463,7 +465,7 @@ a {
 
   a {
     color: $dark-grey;
-    
+
     &:hover {
       color: black;
     }
@@ -506,4 +508,3 @@ a {
     }
   }
 }
-

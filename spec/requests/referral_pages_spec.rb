@@ -1,29 +1,28 @@
 require 'rails_helper'
 
-describe "Referral pages" do
+describe "Referral pages", type: :feature do
   let!(:company) { FactoryGirl.create(:company) }
-  
+
   let!(:r1) do
     FactoryGirl.create(:referral,
       company: company,
       details: "Lorem ipsum",
-      link: "http://example.com")
+      link: "http://example.com",
+      claim_count: 2)
   end
-  
+
   let!(:r2) do
     FactoryGirl.create(:referral,
       company: company,
       details: "Lorem ipsum et",
-      link: "http://example2.com")
+      link: "http://example2.com",
+      claim_count: 4)
   end
-
-  let!(:c1) { FactoryGirl.create(:claim, referral: r1) }
-  let!(:c2) { FactoryGirl.create(:claim, referral: r2) }
 
   subject { page }
 
   describe "referrals index page" do
-    
+
     before { visit root_path }
 
     it { should have_title('Refcodes') }
@@ -35,8 +34,8 @@ describe "Referral pages" do
       it { should have_content(r2.company.name) }
       it { should have_content(r2.details) }
       it { should have_content(r2.link) }
-      it { should have_content(r1.claims.count) }
-      it { should have_content(r2.claims.count) }
+      it { should have_content(r1.claim_count) }
+      it { should have_content(r2.claim_count) }
     end
 
     describe "referral creation" do
@@ -48,7 +47,7 @@ describe "Referral pages" do
 
         describe "error messages" do
           before { click_button "Submit" }
-          
+
           it { should have_css('#error-explanation') }
         end
       end
@@ -69,12 +68,16 @@ describe "Referral pages" do
 
     describe "claim creation" do
       it "should increase claims count when clicked" do
-        expect{ first('.claim-ref').click }.to change(Claim, :count).by(1)
+        expect(r1.claim_count).to eq 2
+
+        first('.claim-ref').click
+
+        expect(r1.reload.claim_count).to eq 3
       end
     end
 
     describe "delete links" do
-      it { should_not have_css('.admin-controls')}
+      it { should_not have_css('.admin-controls') }
 
       describe "as an admin" do
         let(:admin) { FactoryGirl.create(:admin) }
