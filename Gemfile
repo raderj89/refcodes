@@ -35,3 +35,5 @@ group :test do
   gem 'factory_girl_rails'
   # gem 'database_cleaner', github: 'bmabey/database_cleaner'
 end
+
+ruby "2.4.0"
